@@ -28,6 +28,10 @@ Planned features:
 - [ ] Share apps directly from the AppStore into Appmarks.
 - [ ] Create groups to organise bookmarked apps with a custom title.
 
+# How it works
+
+When an an AppStore link is provided, the App ID is parsed from the URL and a request is made to the [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html) to retrieve its metadata.
+
 # License
 
 MIT
