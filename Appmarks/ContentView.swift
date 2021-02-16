@@ -241,8 +241,9 @@ struct ContentView: View {
             }.alert(isPresented: $isAlertShowing) {
                 switch activeAlert {
                 case .About:
+                    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "Unknown"
                     return Alert(
-                        title: Text("Appmarks"),
+                        title: Text("Appmarks v\(appVersion)"),
                         message: Text("Developed by Liam Cottle\nliam@liamcottle.com"),
                         dismissButton: .default(Text("OK"))
                     )
