@@ -14,6 +14,20 @@ I've been wanting to learn to develop iOS apps with SwiftUI, but hadn't been abl
 
 I'm completely new to Swift and SwiftUI, (coming from a Java/PHP/ObjC background), so if I'm doing something wrong, feel free to let me know!
 
+# Features
+
+Currently implemented features:
+
+- [x] Bookmark apps from AppStore URLs on your Clipboard.
+- [x] Bookmarked apps list show the app name, icon, developer and price.
+- [x] Tap to view the app on the AppStore.
+- [x] Swipe to remove bookmarked apps.
+
+Planned features:
+
+- [ ] Share apps directly from the AppStore into Appmarks.
+- [ ] Create groups to organise bookmarked apps with a custom title.
+
 # License
 
 MIT
