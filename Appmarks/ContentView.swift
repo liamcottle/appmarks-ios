@@ -27,12 +27,13 @@ struct ViewButtonStyle: ButtonStyle {
 }
 
 enum ActiveAlert {
-    case About, CopyAppStoreLink
+    case About, CopyAppStoreLink, InvalidSharedUrl
 }
 
 struct ContentView: View {
     
     @Environment(\.managedObjectContext) var context
+    @Environment(\.sharedUrl) var sharedUrl
     
     @State private var isLoading = false
     
@@ -60,6 +61,11 @@ struct ContentView: View {
     
     func showCopyAppStoreLinkAlert() {
         activeAlert = .CopyAppStoreLink
+        isAlertShowing = true
+    }
+    
+    func showInvalidSharedUrlAlert() {
+        activeAlert = .InvalidSharedUrl
         isAlertShowing = true
     }
     
@@ -203,6 +209,21 @@ struct ContentView: View {
         
     }
     
+    func addAppFromSharedUrl(sharedUrl: String) {
+        
+        // add app from app id found in shared url
+        if let appId = AppIdUtil.findAppIdInString(string: sharedUrl) {
+            if let id = Int64(appId) {
+                addApp(id: id)
+                return
+            }
+        }
+        
+        // otherwise, show alert telling user url is invalid
+        showInvalidSharedUrlAlert()
+        
+    }
+    
     @ViewBuilder
     var bookmarkedAppsView: some View {
         if bookmarkedApps.isEmpty {
@@ -240,6 +261,14 @@ struct ContentView: View {
             .onChange(of: isLoading) { value in
                 print("isLoading: \(isLoading)")
             }
+            .onChange(of: sharedUrl, perform: { sharedUrl in
+                
+                // handle shared url
+                if let sharedUrl = sharedUrl {
+                    addAppFromSharedUrl(sharedUrl: sharedUrl)
+                }
+                
+            })
             .onAppear(perform: refreshApps)
             .navigationBarTitle(Text("Appmarks"), displayMode: .inline)
             .toolbar {
@@ -270,6 +299,12 @@ struct ContentView: View {
                     return Alert(
                         title: Text("Copy an AppStore Link"),
                         message: Text("To add an Appmark, copy an AppStore link to your clipboard and then try again."),
+                        dismissButton: .default(Text("OK"))
+                    )
+                case .InvalidSharedUrl:
+                    return Alert(
+                        title: Text("Invalid AppStore Link"),
+                        message: Text("The link you shared doesn't appear to be a valid AppStore URL."),
                         dismissButton: .default(Text("OK"))
                     )
                 }
