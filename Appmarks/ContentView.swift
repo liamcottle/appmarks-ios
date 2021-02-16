@@ -202,19 +202,38 @@ struct ContentView: View {
         showCopyAppStoreLinkAlert()
         
     }
+    
+    @ViewBuilder
+    var bookmarkedAppsView: some View {
+        if bookmarkedApps.isEmpty {
+            bookmarkedAppsEmptyView
+        } else {
+            bookmarkedAppsListView
+        }
+    }
+
+    var bookmarkedAppsEmptyView: some View {
+        VStack {
+            Image(systemName: "bookmark.fill").imageScale(.large)
+            Text("You have no Appmarks").bold()
+            Text("Tap the + icon to add your first Appmark").foregroundColor(.gray)
+        }
+    }
+
+    var bookmarkedAppsListView: some View {
+        List {
+            ForEach(bookmarkedApps, id: \.trackId) { bookmarkedApp in
+                BookmarkedAppView(bookmarkedApp: bookmarkedApp)
+                    .padding(.vertical, 10)
+            }
+            .onDelete(perform: self.deleteRow)
+        }
+    }
 
     @ViewBuilder
     var body: some View {
-        
         NavigationView {
-            
-            List {
-                ForEach(bookmarkedApps, id: \.trackId) { bookmarkedApp in
-                    BookmarkedAppView(bookmarkedApp: bookmarkedApp)
-                        .padding(.vertical, 10)
-                }
-                .onDelete(perform: self.deleteRow)
-            }
+            bookmarkedAppsView
             .pullToRefresh(isShowing: $isLoading) {
                 refreshApps()
             }
@@ -249,15 +268,13 @@ struct ContentView: View {
                     )
                 case .CopyAppStoreLink:
                     return Alert(
-                        title: Text("Copy an App Link"),
-                        message: Text("To add a new Appmark, copy an AppStore link to your clipboard and then try again."),
+                        title: Text("Copy an AppStore Link"),
+                        message: Text("To add an Appmark, copy an AppStore link to your clipboard and then try again."),
                         dismissButton: .default(Text("OK"))
                     )
                 }
             }
-            
         }
-        
     }
     
 }
