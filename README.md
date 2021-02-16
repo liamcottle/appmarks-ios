@@ -22,10 +22,10 @@ Currently implemented features:
 - [x] Bookmarked apps list show the app name, icon, developer and price.
 - [x] Tap to view the app on the AppStore.
 - [x] Swipe to remove bookmarked apps.
+- [x] Share apps directly from the AppStore into Appmarks.
 
 Planned features:
 
-- [ ] Share apps directly from the AppStore into Appmarks.
 - [ ] Create groups to organise bookmarked apps with a custom title.
 
 # How it works
