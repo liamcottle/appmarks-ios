@@ -5,76 +5,264 @@
 //  Created by Liam Cottle on 17/02/21.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
+import SwiftUIRefresh
 
-struct ContentView: View {
-    @Environment(\.managedObjectContext) private var viewContext
+// app icon gradient colours: #102C5B #718EB8
+let themeColour = UIColor(rgb: 0x102C5B, alphaVal: 1);
+let themeColourLight = UIColor(rgb: 0x718EB8, alphaVal: 1);
+let themeTextColour = UIColor(rgb: 0xFFFFFF, alphaVal: 1);
 
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<Item>
-
-    var body: some View {
-        List {
-            ForEach(items) { item in
-                Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            }
-            .onDelete(perform: deleteItems)
-        }
-        .toolbar {
-            #if os(iOS)
-            EditButton()
-            #endif
-
-            Button(action: addItem) {
-                Label("Add Item", systemImage: "plus")
-            }
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-        }
+struct ViewButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        return configuration.label
+            .padding(.vertical, 5)
+            .padding(.horizontal, 20)
+            .background(Color(configuration.isPressed ? themeColourLight : themeColour))
+            .foregroundColor(Color(themeTextColour))
+            .cornerRadius(25)
+            .font(Font.body.bold())
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
+enum ActiveAlert {
+    case About, CopyAppStoreLink
+}
+
+struct ContentView: View {
+    
+    @Environment(\.managedObjectContext) var context
+    
+    @State private var isLoading = false
+    
+    @State private var isAlertShowing = false
+    @State private var activeAlert: ActiveAlert = .About
+    
+    @FetchRequest(
+        entity: BookmarkedApp.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \BookmarkedApp.trackName, ascending: true),
+        ],
+        predicate: nil
+    ) var bookmarkedApps: FetchedResults<BookmarkedApp>
+    
+    init() {
+        UINavigationBar.appearance().tintColor = themeTextColour
+        UINavigationBar.appearance().barTintColor = themeColour
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: themeTextColour]
+    }
+    
+    func showAboutAlert() {
+        activeAlert = .About
+        isAlertShowing = true
+    }
+    
+    func showCopyAppStoreLinkAlert() {
+        activeAlert = .CopyAppStoreLink
+        isAlertShowing = true
+    }
+    
+    func isAppBookmarked(id: Int64) -> Bool {
+        return bookmarkedApps.contains(where: { (bookmarkedApp) -> Bool in
+            return bookmarkedApp.trackId == id;
+        });
+    }
+    
+    func findOrCreateBookmarkedApp(id: Int64) -> BookmarkedApp {
+        return bookmarkedApps.first(where: { (bookmarkedApp) -> Bool in
+            return bookmarkedApp.trackId == id;
+        }) ?? BookmarkedApp(context: context)
+    }
+    
+    func getBookmarkedAppIdsAsStrings() -> [String] {
+        return bookmarkedApps.map { (bookmarkedApp) -> String in
+            return String(bookmarkedApp.trackId)
+        }
+    }
+    
+    func addApp(id: Int64) {
+        
+        // log
+        print("addApp: [\(id)]")
+        
+        AppleiTunesAPI.lookupByIds(ids: [String(id)]) { response in
+            
+            if(response.results.count > 0){
+                
+                let result = response.results.first
+                
+                if(result != nil){
+                    updateApp(appInfo: result!)
+                }
+                
+            }
+            
+            // todo tell user result?
+            
+        } errorCallback: { error in
+            // todo handle error
+            print("ERROR:" + (error?.localizedDescription ?? "Unknown Error"))
+        }
+        
+    }
+    
+    func updateApp(appInfo: AppInfo) {
+        
+        // log
+        print("updateApp: [\(appInfo.trackId)] \(appInfo.trackName)")
+        
+        // find or create app
+        let bookmarkedApp = findOrCreateBookmarkedApp(id: appInfo.trackId)
+        
+        // update details
+        bookmarkedApp.trackId = appInfo.trackId
+        bookmarkedApp.trackName = appInfo.trackName
+        bookmarkedApp.trackViewUrl = appInfo.trackViewUrl
+        bookmarkedApp.artistName = appInfo.artistName
+        bookmarkedApp.artworkUrl512 = appInfo.artworkUrl512
+        bookmarkedApp.price = appInfo.price ?? 0
+        bookmarkedApp.formattedPrice = appInfo.formattedPrice
+        bookmarkedApp.currency = appInfo.currency
+        
+        // save to coredata
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func deleteApp(bookmarkedApp: BookmarkedApp) {
+        
+        // log
+        print("deleteApp: \(bookmarkedApp.trackId)")
+        
+        // delete bookmarked app
+        context.delete(bookmarkedApp)
+        
+        // save to coredata
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func refreshApps() {
+        
+        print("refreshApps")
+        
+        self.isLoading = true
+        
+        // lookup bookmarked apps
+        AppleiTunesAPI.lookupByIds(ids: getBookmarkedAppIdsAsStrings()) { response in
+            
+            print("refreshApps: response")
+            
+            // update bookmarked apps in core data
+            response.results.forEach { (appInfo) in
+                updateApp(appInfo: appInfo)
+            }
+            
+            // no longer loading
+            self.isLoading = false
+            
+        } errorCallback: { error in
+            
+            print("refreshApps: errorCallback")
+            
+            // no longer loading
+            self.isLoading = false
+            
+            // todo handle error
+            print("refreshApps: error = " + (error?.localizedDescription ?? "Unknown Error"))
+            
+        }
+        
+    }
+    
+    private func deleteRow(at indexSet: IndexSet) {
+        for index in indexSet {
+            deleteApp(bookmarkedApp: bookmarkedApps[index])
+        }
+    }
+    
+    func addAppFromClipboard() {
+        
+        // add app from app id on clipboard
+        if let appId = ClipboardUtil.getAppIdFromClipboard() {
+            addApp(id: appId)
+            return
+        }
+        
+        // otherwise, show alert asking user to copy link
+        showCopyAppStoreLinkAlert()
+        
+    }
+
+    @ViewBuilder
+    var body: some View {
+        
+        NavigationView {
+            
+            List {
+                ForEach(bookmarkedApps, id: \.trackId) { bookmarkedApp in
+                    BookmarkedAppView(bookmarkedApp: bookmarkedApp)
+                        .padding(.vertical, 10)
+                }
+                .onDelete(perform: self.deleteRow)
+            }
+            .pullToRefresh(isShowing: $isLoading) {
+                refreshApps()
+            }
+            .onChange(of: isLoading) { value in
+                print("isLoading: \(isLoading)")
+            }
+            .onAppear(perform: refreshApps)
+            .navigationBarTitle(Text("Appmarks"), displayMode: .inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {
+                        showAboutAlert()
+                    }) {
+                        Image(systemName: "bookmark.fill")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        addAppFromClipboard()
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                }
+            }.alert(isPresented: $isAlertShowing) {
+                switch activeAlert {
+                case .About:
+                    return Alert(
+                        title: Text("Appmarks"),
+                        message: Text("Developed by Liam Cottle\nliam@liamcottle.com"),
+                        dismissButton: .default(Text("OK"))
+                    )
+                case .CopyAppStoreLink:
+                    return Alert(
+                        title: Text("Copy an App Link"),
+                        message: Text("To add a new Appmark, copy an AppStore link to your clipboard and then try again."),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
+            }
+            
+        }
+        
+    }
+    
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView()
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,13 @@
 		E7591E3325DC00380001BA6E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7591E3225DC00380001BA6E /* Preview Assets.xcassets */; };
 		E7591E3525DC00390001BA6E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E3425DC00390001BA6E /* Persistence.swift */; };
 		E7591E3825DC00390001BA6E /* Appmarks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7591E3625DC00390001BA6E /* Appmarks.xcdatamodeld */; };
+		E7591E4225DC023E0001BA6E /* AppleiTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */; };
+		E7591E4525DC02570001BA6E /* ClipboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4425DC02570001BA6E /* ClipboardUtil.swift */; };
+		E7591E4825DC02900001BA6E /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4725DC02900001BA6E /* HostingController.swift */; };
+		E7591E4B25DC02D00001BA6E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4A25DC02D00001BA6E /* UIColor+Extensions.swift */; };
+		E7591E5025DC02FC0001BA6E /* BookmarkedAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4F25DC02FC0001BA6E /* BookmarkedAppView.swift */; };
+		E7591E5525DC03420001BA6E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E7591E5425DC03420001BA6E /* SDWebImageSwiftUI */; };
+		E7591E5925DC03640001BA6E /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = E7591E5825DC03640001BA6E /* SwiftUIRefresh */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +31,11 @@
 		E7591E3425DC00390001BA6E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		E7591E3725DC00390001BA6E /* Appmarks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Appmarks.xcdatamodel; sourceTree = "<group>"; };
 		E7591E3925DC00390001BA6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleiTunesAPI.swift; sourceTree = "<group>"; };
+		E7591E4425DC02570001BA6E /* ClipboardUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardUtil.swift; sourceTree = "<group>"; };
+		E7591E4725DC02900001BA6E /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		E7591E4A25DC02D00001BA6E /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		E7591E4F25DC02FC0001BA6E /* BookmarkedAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkedAppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7591E5925DC03640001BA6E /* SwiftUIRefresh in Frameworks */,
+				E7591E5525DC03420001BA6E /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +70,7 @@
 		E7591E2A25DC00380001BA6E /* Appmarks */ = {
 			isa = PBXGroup;
 			children = (
+				E7591E4E25DC02F40001BA6E /* Views */,
 				E7591E2B25DC00380001BA6E /* AppmarksApp.swift */,
 				E7591E2D25DC00380001BA6E /* ContentView.swift */,
 				E7591E2F25DC00380001BA6E /* Assets.xcassets */,
@@ -63,6 +78,10 @@
 				E7591E3925DC00390001BA6E /* Info.plist */,
 				E7591E3625DC00390001BA6E /* Appmarks.xcdatamodeld */,
 				E7591E3125DC00380001BA6E /* Preview Content */,
+				E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */,
+				E7591E4425DC02570001BA6E /* ClipboardUtil.swift */,
+				E7591E4725DC02900001BA6E /* HostingController.swift */,
+				E7591E4A25DC02D00001BA6E /* UIColor+Extensions.swift */,
 			);
 			path = Appmarks;
 			sourceTree = "<group>";
@@ -73,6 +92,14 @@
 				E7591E3225DC00380001BA6E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E7591E4E25DC02F40001BA6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E7591E4F25DC02FC0001BA6E /* BookmarkedAppView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -91,6 +118,10 @@
 			dependencies = (
 			);
 			name = Appmarks;
+			packageProductDependencies = (
+				E7591E5425DC03420001BA6E /* SDWebImageSwiftUI */,
+				E7591E5825DC03640001BA6E /* SwiftUIRefresh */,
+			);
 			productName = Appmarks;
 			productReference = E7591E2825DC00380001BA6E /* Appmarks.app */;
 			productType = "com.apple.product-type.application";
@@ -118,6 +149,10 @@
 				Base,
 			);
 			mainGroup = E7591E1F25DC00380001BA6E;
+			packageReferences = (
+				E7591E5325DC03420001BA6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				E7591E5725DC03640001BA6E /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+			);
 			productRefGroup = E7591E2925DC00380001BA6E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -145,8 +180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7591E3825DC00390001BA6E /* Appmarks.xcdatamodeld in Sources */,
+				E7591E5025DC02FC0001BA6E /* BookmarkedAppView.swift in Sources */,
+				E7591E4225DC023E0001BA6E /* AppleiTunesAPI.swift in Sources */,
 				E7591E3525DC00390001BA6E /* Persistence.swift in Sources */,
 				E7591E2E25DC00380001BA6E /* ContentView.swift in Sources */,
+				E7591E4B25DC02D00001BA6E /* UIColor+Extensions.swift in Sources */,
+				E7591E4825DC02900001BA6E /* HostingController.swift in Sources */,
+				E7591E4525DC02570001BA6E /* ClipboardUtil.swift in Sources */,
 				E7591E2C25DC00380001BA6E /* AppmarksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +376,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E7591E5325DC03420001BA6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+		E7591E5725DC03640001BA6E /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/timbersoftware/SwiftUIRefresh.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E7591E5425DC03420001BA6E /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7591E5325DC03420001BA6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		E7591E5825DC03640001BA6E /* SwiftUIRefresh */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7591E5725DC03640001BA6E /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
+			productName = SwiftUIRefresh;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E7591E3625DC00390001BA6E /* Appmarks.xcdatamodeld */ = {
