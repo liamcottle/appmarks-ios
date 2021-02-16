@@ -2,7 +2,7 @@
 <a href="https://github.com/liamcottle/appmarks-ios"><img src="https://github.com/liamcottle/appmarks-ios/blob/main/Appmarks.png?raw=true" width="200"></a>
 </p>
 
-# Appmarks
+<h2 align="center"> Appmarks </h2>
 
 Appmarks is an iOS app developed with SwiftUI that lets you bookmark apps from the AppStore.
 
