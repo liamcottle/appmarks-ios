@@ -23,10 +23,7 @@ Currently implemented features:
 - [x] Tap to view the app on the AppStore.
 - [x] Swipe to remove bookmarked apps.
 - [x] Share apps directly from the AppStore into Appmarks.
-
-Planned features:
-
-- [ ] Create groups to organise bookmarked apps with a custom title.
+- [x] Create groups to organise bookmarked apps with a custom title.
 
 # How it works
 
