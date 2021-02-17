@@ -38,6 +38,7 @@ struct GroupScreen : View {
             }
             .onDelete(perform: self.deleteRow)
         }
+        .listStyle(InsetGroupedListStyle())
     }
 
     var body: some View {

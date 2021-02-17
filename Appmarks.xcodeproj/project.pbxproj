@@ -27,6 +27,7 @@
 		E792B83F25DD084B0039D800 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83E25DD084B0039D800 /* GroupView.swift */; };
 		E792B84425DD14BC0039D800 /* GroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84325DD14BC0039D800 /* GroupScreen.swift */; };
 		E792B84A25DD16900039D800 /* CreateGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84925DD16900039D800 /* CreateGroupScreen.swift */; };
+		E792B84E25DD57D20039D800 /* CreateAppmarkScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84D25DD57D20039D800 /* CreateAppmarkScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		E792B83E25DD084B0039D800 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		E792B84325DD14BC0039D800 /* GroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreen.swift; sourceTree = "<group>"; };
 		E792B84925DD16900039D800 /* CreateGroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupScreen.swift; sourceTree = "<group>"; };
+		E792B84D25DD57D20039D800 /* CreateAppmarkScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAppmarkScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			children = (
 				E792B84325DD14BC0039D800 /* GroupScreen.swift */,
 				E792B84925DD16900039D800 /* CreateGroupScreen.swift */,
+				E792B84D25DD57D20039D800 /* CreateAppmarkScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			files = (
 				E7591E3825DC00390001BA6E /* Appmarks.xcdatamodeld in Sources */,
 				E792B84A25DD16900039D800 /* CreateGroupScreen.swift in Sources */,
+				E792B84E25DD57D20039D800 /* CreateAppmarkScreen.swift in Sources */,
 				E792B84425DD14BC0039D800 /* GroupScreen.swift in Sources */,
 				E792B83525DC42A80039D800 /* AppIdUtil.swift in Sources */,
 				E7591E5025DC02FC0001BA6E /* BookmarkedAppView.swift in Sources */,

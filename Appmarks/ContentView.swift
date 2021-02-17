@@ -42,6 +42,9 @@ struct ContentView: View {
     
     @State private var isShowingCreateGroupScreen = false
     
+    @State private var isShowingCreateAppmarkScreen = false
+    @State private var createAppmarkScreenAppId: Int64 = 0
+    
     // get list of all bookmarked apps so they can be refreshed
     @FetchRequest(
         entity: BookmarkedApp.entity(),
@@ -90,6 +93,11 @@ struct ContentView: View {
         isAlertShowing = true
     }
     
+    func showCreateAppmarkScreen(appId: Int64) {
+        createAppmarkScreenAppId = appId
+        isShowingCreateAppmarkScreen = true
+    }
+    
     func isAppBookmarked(id: Int64) -> Bool {
         return bookmarkedApps.contains(where: { (bookmarkedApp) -> Bool in
             return bookmarkedApp.trackId == id;
@@ -113,24 +121,8 @@ struct ContentView: View {
         // log
         print("addApp: [\(id)]")
         
-        AppleiTunesAPI.lookupByIds(ids: [String(id)]) { response in
-            
-            if(response.results.count > 0){
-                
-                let result = response.results.first
-                
-                if(result != nil){
-                    updateApp(appInfo: result!)
-                }
-                
-            }
-            
-            // todo tell user result?
-            
-        } errorCallback: { error in
-            // todo handle error
-            print("ERROR:" + (error?.localizedDescription ?? "Unknown Error"))
-        }
+        // show screen to create appmark
+        showCreateAppmarkScreen(appId: id)
         
     }
     
@@ -230,7 +222,7 @@ struct ContentView: View {
     
     private func deleteBookmarkedAppRow(at indexSet: IndexSet) {
         for index in indexSet {
-            deleteBookmarkedApp(bookmarkedApp: bookmarkedApps[index])
+            deleteBookmarkedApp(bookmarkedApp: ungroupedBookmarkedApps[index])
         }
     }
     
@@ -349,6 +341,10 @@ struct ContentView: View {
                 }
                 
             })
+            .background(
+                NavigationLink("", destination: CreateAppmarkScreen(id: createAppmarkScreenAppId), isActive: $isShowingCreateAppmarkScreen)
+                    .isDetailLink(false)
+            )
             .background(
                 NavigationLink("", destination: CreateGroupScreen(), isActive: $isShowingCreateGroupScreen)
                     .isDetailLink(false)
