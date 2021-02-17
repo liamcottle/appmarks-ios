@@ -40,6 +40,9 @@ struct ContentView: View {
     @State private var isAlertShowing = false
     @State private var activeAlert: ActiveAlert = .About
     
+    @State private var isShowingCreateGroupScreen = false
+    
+    // get list of all bookmarked apps so they can be refreshed
     @FetchRequest(
         entity: BookmarkedApp.entity(),
         sortDescriptors: [
@@ -47,6 +50,24 @@ struct ContentView: View {
         ],
         predicate: nil
     ) var bookmarkedApps: FetchedResults<BookmarkedApp>
+    
+    // get list of ungrouped bookmarked apps to show on main screen
+    @FetchRequest(
+        entity: BookmarkedApp.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \BookmarkedApp.trackName, ascending: true),
+        ],
+        predicate: NSPredicate(format: "group == null")
+    ) var ungroupedBookmarkedApps: FetchedResults<BookmarkedApp>
+    
+    // get list of groups to show on main screen
+    @FetchRequest(
+        entity: Group.entity(),
+        sortDescriptors: [
+            NSSortDescriptor(keyPath: \Group.name, ascending: true),
+        ],
+        predicate: nil
+    ) var groups: FetchedResults<Group>
     
     init() {
         UINavigationBar.appearance().tintColor = themeTextColour
@@ -140,7 +161,7 @@ struct ContentView: View {
         
     }
     
-    func deleteApp(bookmarkedApp: BookmarkedApp) {
+    func deleteBookmarkedApp(bookmarkedApp: BookmarkedApp) {
         
         // log
         print("deleteApp: \(bookmarkedApp.trackId)")
@@ -157,16 +178,33 @@ struct ContentView: View {
         
     }
     
-    func refreshApps() {
+    func deleteGroup(group: Group) {
         
-        print("refreshApps")
+        // log
+        print("deleteGroup: \(group.name ?? "")")
+        
+        // delete group
+        context.delete(group)
+        
+        // save to coredata
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+        
+    }
+    
+    func refreshBookmarkedApps() {
+        
+        print("refreshBookmarkedApps")
         
         self.isLoading = true
         
         // lookup bookmarked apps
         AppleiTunesAPI.lookupByIds(ids: getBookmarkedAppIdsAsStrings()) { response in
             
-            print("refreshApps: response")
+            print("refreshBookmarkedApps: response")
             
             // update bookmarked apps in core data
             response.results.forEach { (appInfo) in
@@ -178,21 +216,27 @@ struct ContentView: View {
             
         } errorCallback: { error in
             
-            print("refreshApps: errorCallback")
+            print("refreshBookmarkedApps: errorCallback")
             
             // no longer loading
             self.isLoading = false
             
             // todo handle error
-            print("refreshApps: error = " + (error?.localizedDescription ?? "Unknown Error"))
+            print("refreshBookmarkedApps: error = " + (error?.localizedDescription ?? "Unknown Error"))
             
         }
         
     }
     
-    private func deleteRow(at indexSet: IndexSet) {
+    private func deleteBookmarkedAppRow(at indexSet: IndexSet) {
         for index in indexSet {
-            deleteApp(bookmarkedApp: bookmarkedApps[index])
+            deleteBookmarkedApp(bookmarkedApp: bookmarkedApps[index])
+        }
+    }
+    
+    private func deleteGroupRow(at indexSet: IndexSet) {
+        for index in indexSet {
+            deleteGroup(group: groups[index])
         }
     }
     
@@ -225,38 +269,74 @@ struct ContentView: View {
     }
     
     @ViewBuilder
-    var bookmarkedAppsView: some View {
-        if bookmarkedApps.isEmpty {
-            bookmarkedAppsEmptyView
+    var listOrEmptyView: some View {
+        if ungroupedBookmarkedApps.isEmpty && groups.isEmpty {
+            emptyView
         } else {
-            bookmarkedAppsListView
+            listView
         }
     }
 
-    var bookmarkedAppsEmptyView: some View {
+    var emptyView: some View {
         VStack {
-            Image(systemName: "bookmark.fill").imageScale(.large)
+            
+            Image(systemName: "bookmark")
+                .imageScale(.large)
+                .padding(.bottom, 5)
+            
             Text("You have no Appmarks").bold()
-            Text("Tap the + icon to add your first Appmark").foregroundColor(.gray)
-        }
+            Text("Share an app from the App Store")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.gray)
+            
+            Button("Open the App Store", action: {
+                if let url = URL(string: "itms-apps://itunes.apple.com") {
+                    UIApplication.shared.open(url)
+                }
+            }).padding(.top, 5)
+            
+        }.padding(.horizontal, 25)
     }
 
-    var bookmarkedAppsListView: some View {
+    var listView: some View {
         List {
-            ForEach(bookmarkedApps, id: \.trackId) { bookmarkedApp in
-                BookmarkedAppView(bookmarkedApp: bookmarkedApp)
-                    .padding(.vertical, 10)
+            
+            // section of groups
+            if !groups.isEmpty {
+                Section {
+                    ForEach(groups, id: \.id) { (group: Group) in
+                        NavigationLink(destination: GroupScreen(group: group)) {
+                            GroupView(group: group)
+                                .padding(.vertical, 10)
+                        }
+                    }
+                    .onDelete(perform: self.deleteGroupRow)
+                }
             }
-            .onDelete(perform: self.deleteRow)
+            
+            // section of bookmarked apps
+            if !ungroupedBookmarkedApps.isEmpty {
+                Section {
+                    ForEach(ungroupedBookmarkedApps, id: \.trackId) { bookmarkedApp in
+                        BookmarkedAppView(bookmarkedApp: bookmarkedApp)
+                            .padding(.vertical, 10)
+                    }
+                    .onDelete(perform: self.deleteBookmarkedAppRow)
+                }
+            }
+            
         }
+        .listStyle(InsetGroupedListStyle())
     }
 
     @ViewBuilder
     var body: some View {
         NavigationView {
-            bookmarkedAppsView
+            HStack {
+                listOrEmptyView
+            }
             .pullToRefresh(isShowing: $isLoading) {
-                refreshApps()
+                refreshBookmarkedApps()
             }
             .onChange(of: isLoading) { value in
                 print("isLoading: \(isLoading)")
@@ -269,7 +349,11 @@ struct ContentView: View {
                 }
                 
             })
-            .onAppear(perform: refreshApps)
+            .background(
+                NavigationLink("", destination: CreateGroupScreen(), isActive: $isShowingCreateGroupScreen)
+                    .isDetailLink(false)
+            )
+            .onAppear(perform: refreshBookmarkedApps)
             .navigationBarTitle(Text("Appmarks"), displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -284,6 +368,13 @@ struct ContentView: View {
                         addAppFromClipboard()
                     }) {
                         Image(systemName: "plus")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        self.isShowingCreateGroupScreen = true
+                    }) {
+                        Image(systemName: "folder.badge.plus")
                     }
                 }
             }.alert(isPresented: $isAlertShowing) {

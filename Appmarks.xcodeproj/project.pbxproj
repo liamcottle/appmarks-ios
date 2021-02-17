@@ -24,6 +24,9 @@
 		E792B82025DC2ADB0039D800 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E792B81E25DC2ADB0039D800 /* MainInterface.storyboard */; };
 		E792B82425DC2ADB0039D800 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E792B81A25DC2ADB0039D800 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E792B83525DC42A80039D800 /* AppIdUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83425DC42A80039D800 /* AppIdUtil.swift */; };
+		E792B83F25DD084B0039D800 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83E25DD084B0039D800 /* GroupView.swift */; };
+		E792B84425DD14BC0039D800 /* GroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84325DD14BC0039D800 /* GroupScreen.swift */; };
+		E792B84A25DD16900039D800 /* CreateGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84925DD16900039D800 /* CreateGroupScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,9 @@
 		E792B82125DC2ADB0039D800 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E792B83125DC357F0039D800 /* Appmarks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Appmarks.entitlements; sourceTree = "<group>"; };
 		E792B83425DC42A80039D800 /* AppIdUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIdUtil.swift; sourceTree = "<group>"; };
+		E792B83E25DD084B0039D800 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
+		E792B84325DD14BC0039D800 /* GroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreen.swift; sourceTree = "<group>"; };
+		E792B84925DD16900039D800 /* CreateGroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				E792B83125DC357F0039D800 /* Appmarks.entitlements */,
+				E792B84225DD14A10039D800 /* Screens */,
 				E7591E4E25DC02F40001BA6E /* Views */,
 				E7591E2B25DC00380001BA6E /* AppmarksApp.swift */,
 				E7591E2D25DC00380001BA6E /* ContentView.swift */,
@@ -143,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				E7591E4F25DC02FC0001BA6E /* BookmarkedAppView.swift */,
+				E792B83E25DD084B0039D800 /* GroupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -155,6 +163,15 @@
 				E792B82125DC2ADB0039D800 /* Info.plist */,
 			);
 			path = ShareExtension;
+			sourceTree = "<group>";
+		};
+		E792B84225DD14A10039D800 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E792B84325DD14BC0039D800 /* GroupScreen.swift */,
+				E792B84925DD16900039D800 /* CreateGroupScreen.swift */,
+			);
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +283,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7591E3825DC00390001BA6E /* Appmarks.xcdatamodeld in Sources */,
+				E792B84A25DD16900039D800 /* CreateGroupScreen.swift in Sources */,
+				E792B84425DD14BC0039D800 /* GroupScreen.swift in Sources */,
 				E792B83525DC42A80039D800 /* AppIdUtil.swift in Sources */,
 				E7591E5025DC02FC0001BA6E /* BookmarkedAppView.swift in Sources */,
 				E7591E4225DC023E0001BA6E /* AppleiTunesAPI.swift in Sources */,
@@ -274,6 +293,7 @@
 				E7591E4B25DC02D00001BA6E /* UIColor+Extensions.swift in Sources */,
 				E7591E4825DC02900001BA6E /* HostingController.swift in Sources */,
 				E7591E4525DC02570001BA6E /* ClipboardUtil.swift in Sources */,
+				E792B83F25DD084B0039D800 /* GroupView.swift in Sources */,
 				E7591E2C25DC00380001BA6E /* AppmarksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
