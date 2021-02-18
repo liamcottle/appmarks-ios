@@ -34,7 +34,7 @@ struct CreateGroupScreen: View {
         .navigationTitle("Create Group")
         .toolbar {
             ToolbarItem {
-                Button("Create", action: {
+                Button("Done", action: {
                     createGroup()
                 })
             }
