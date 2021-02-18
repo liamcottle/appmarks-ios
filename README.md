@@ -29,6 +29,12 @@ Currently implemented features:
 
 When an an AppStore link is provided, the App ID is parsed from the URL and a request is made to the [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html) to retrieve its metadata.
 
+# Screenshots
+
+Welcome (Empty) | Create Appmark | Welcome (Content) | Group
+:-:|:-:|:-:|:-:
+![](Screenshots/1_main_empty.png) | ![](Screenshots/2_create_appmark.png) | ![](Screenshots/3_main_content.png) | ![](Screenshots/4_group.png)
+
 # License
 
 MIT
