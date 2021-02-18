@@ -13,6 +13,8 @@ struct GroupScreen : View {
     @ObservedObject var group: Group
     @Environment(\.managedObjectContext) var context
     
+    @State private var isShowingEditGroupScreen = false
+    
     @ViewBuilder
     var listOrEmptyView: some View {
         if group.bookmarkedApps?.count == 0 {
@@ -44,6 +46,19 @@ struct GroupScreen : View {
     var body: some View {
         listOrEmptyView
         .navigationTitle(group.name ?? "Unknown Group")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    self.isShowingEditGroupScreen = true
+                }) {
+                    Image(systemName: "pencil")
+                }.sheet(isPresented: $isShowingEditGroupScreen) {
+                    NavigationView {
+                        EditGroupScreen(group: group)
+                    }
+                }
+            }
+        }
     }
     
     private func getBookmarkedApps() -> [BookmarkedApp] {
