@@ -4,6 +4,10 @@
 
 <h2 align="center">Appmarks</h2>
 
+Welcome | Create Appmark | Main Content | Group
+:-:|:-:|:-:|:-:
+![](Screenshots/1_main_empty.png) | ![](Screenshots/2_create_appmark.png) | ![](Screenshots/3_main_content.png) | ![](Screenshots/4_group.png)
+
 # About
 
 Appmarks is an iOS app developed with SwiftUI that lets you bookmark apps from the AppStore.
@@ -28,12 +32,6 @@ Currently implemented features:
 # How it works
 
 When an an AppStore link is provided, the App ID is parsed from the URL and a request is made to the [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html) to retrieve its metadata.
-
-# Screenshots
-
-Welcome (Empty) | Create Appmark | Welcome (Content) | Group
-:-:|:-:|:-:|:-:
-![](Screenshots/1_main_empty.png) | ![](Screenshots/2_create_appmark.png) | ![](Screenshots/3_main_content.png) | ![](Screenshots/4_group.png)
 
 # License
 
