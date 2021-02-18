@@ -25,11 +25,12 @@ struct CreateGroupScreen: View {
     }
 
     var body: some View {
-        Form {
+        List {
             Section {
                 TextField("Name", text: $name)
             }
         }
+        .listStyle(GroupedListStyle())
         .navigationTitle("Create Group")
         .toolbar {
             ToolbarItem {
