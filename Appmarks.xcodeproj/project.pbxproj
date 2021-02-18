@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E742172625DEC71900D98FF6 /* AppmarksFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E742172425DEC71900D98FF6 /* AppmarksFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E742172925DEC71900D98FF6 /* AppmarksFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; };
+		E742172B25DEC71900D98FF6 /* AppmarksFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E742173725DEC7AB00D98FF6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */; };
+		E742177425DED10600D98FF6 /* AppmarksDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E742173125DEC75800D98FF6 /* AppmarksDataModel.xcdatamodeld */; };
+		E742178A25DED62900D98FF6 /* AppmarksFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; };
+		E742178B25DED62900D98FF6 /* AppmarksFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E742179025DEDA2C00D98FF6 /* AppleiTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */; };
+		E742179525DEDAAB00D98FF6 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E742179425DEDAAB00D98FF6 /* SDWebImageSwiftUI */; };
+		E742179825DEDBBC00D98FF6 /* AppIdUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83425DC42A80039D800 /* AppIdUtil.swift */; };
+		E742179A25DEDE2A00D98FF6 /* ClipboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4425DC02570001BA6E /* ClipboardUtil.swift */; };
+		E742179E25DEF91900D98FF6 /* CreateGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742179D25DEF91900D98FF6 /* CreateGroupScreen.swift */; };
 		E7591E2C25DC00380001BA6E /* AppmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E2B25DC00380001BA6E /* AppmarksApp.swift */; };
 		E7591E2E25DC00380001BA6E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E2D25DC00380001BA6E /* ContentView.swift */; };
 		E7591E3025DC00380001BA6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7591E2F25DC00380001BA6E /* Assets.xcassets */; };
 		E7591E3325DC00380001BA6E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7591E3225DC00380001BA6E /* Preview Assets.xcassets */; };
-		E7591E3525DC00390001BA6E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E3425DC00390001BA6E /* Persistence.swift */; };
-		E7591E3825DC00390001BA6E /* Appmarks.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E7591E3625DC00390001BA6E /* Appmarks.xcdatamodeld */; };
-		E7591E4225DC023E0001BA6E /* AppleiTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */; };
-		E7591E4525DC02570001BA6E /* ClipboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4425DC02570001BA6E /* ClipboardUtil.swift */; };
 		E7591E4825DC02900001BA6E /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4725DC02900001BA6E /* HostingController.swift */; };
 		E7591E4B25DC02D00001BA6E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4A25DC02D00001BA6E /* UIColor+Extensions.swift */; };
 		E7591E5025DC02FC0001BA6E /* BookmarkedAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4F25DC02FC0001BA6E /* BookmarkedAppView.swift */; };
@@ -23,7 +31,6 @@
 		E792B81D25DC2ADB0039D800 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B81C25DC2ADB0039D800 /* ShareViewController.swift */; };
 		E792B82025DC2ADB0039D800 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E792B81E25DC2ADB0039D800 /* MainInterface.storyboard */; };
 		E792B82425DC2ADB0039D800 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E792B81A25DC2ADB0039D800 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E792B83525DC42A80039D800 /* AppIdUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83425DC42A80039D800 /* AppIdUtil.swift */; };
 		E792B83F25DD084B0039D800 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83E25DD084B0039D800 /* GroupView.swift */; };
 		E792B84425DD14BC0039D800 /* GroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84325DD14BC0039D800 /* GroupScreen.swift */; };
 		E792B84A25DD16900039D800 /* CreateGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84925DD16900039D800 /* CreateGroupScreen.swift */; };
@@ -33,6 +40,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E742172725DEC71900D98FF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7591E2025DC00380001BA6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E742172125DEC71900D98FF6;
+			remoteInfo = AppmarksFramework;
+		};
+		E742178C25DED62900D98FF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7591E2025DC00380001BA6E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E742172125DEC71900D98FF6;
+			remoteInfo = AppmarksFramework;
+		};
 		E792B82225DC2ADB0039D800 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7591E2025DC00380001BA6E /* Project object */;
@@ -43,6 +64,28 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		E742172A25DEC71900D98FF6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E742172B25DEC71900D98FF6 /* AppmarksFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E742178E25DED62900D98FF6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E742178B25DED62900D98FF6 /* AppmarksFramework.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E792B82525DC2ADB0039D800 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,13 +100,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E742172225DEC71900D98FF6 /* AppmarksFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppmarksFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E742172425DEC71900D98FF6 /* AppmarksFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppmarksFramework.h; sourceTree = "<group>"; };
+		E742172525DEC71900D98FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E742173225DEC75800D98FF6 /* AppmarksDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppmarksDataModel.xcdatamodel; sourceTree = "<group>"; };
+		E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		E742174425DECB8200D98FF6 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
+		E742179D25DEF91900D98FF6 /* CreateGroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupScreen.swift; sourceTree = "<group>"; };
 		E7591E2825DC00380001BA6E /* Appmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7591E2B25DC00380001BA6E /* AppmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppmarksApp.swift; sourceTree = "<group>"; };
 		E7591E2D25DC00380001BA6E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E7591E2F25DC00380001BA6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7591E3225DC00380001BA6E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E7591E3425DC00390001BA6E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		E7591E3725DC00390001BA6E /* Appmarks.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Appmarks.xcdatamodel; sourceTree = "<group>"; };
 		E7591E3925DC00390001BA6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleiTunesAPI.swift; sourceTree = "<group>"; };
 		E7591E4425DC02570001BA6E /* ClipboardUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardUtil.swift; sourceTree = "<group>"; };
@@ -84,10 +132,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E742171F25DEC71900D98FF6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7591E2525DC00380001BA6E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E742172925DEC71900D98FF6 /* AppmarksFramework.framework in Frameworks */,
 				E792B85E25DE988C0039D800 /* MultiModal in Frameworks */,
 				E7591E5925DC03640001BA6E /* SwiftUIRefresh in Frameworks */,
 				E7591E5525DC03420001BA6E /* SDWebImageSwiftUI in Frameworks */,
@@ -98,18 +154,52 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E742179525DEDAAB00D98FF6 /* SDWebImageSwiftUI in Frameworks */,
+				E742178A25DED62900D98FF6 /* AppmarksFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E742172325DEC71900D98FF6 /* AppmarksFramework */ = {
+			isa = PBXGroup;
+			children = (
+				E742179C25DEF90700D98FF6 /* Views */,
+				E7591E4425DC02570001BA6E /* ClipboardUtil.swift */,
+				E792B83425DC42A80039D800 /* AppIdUtil.swift */,
+				E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */,
+				E742172425DEC71900D98FF6 /* AppmarksFramework.h */,
+				E742172525DEC71900D98FF6 /* Info.plist */,
+				E742173125DEC75800D98FF6 /* AppmarksDataModel.xcdatamodeld */,
+				E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */,
+			);
+			path = AppmarksFramework;
+			sourceTree = "<group>";
+		};
+		E742178925DED62900D98FF6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E742179C25DEF90700D98FF6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E742179D25DEF91900D98FF6 /* CreateGroupScreen.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		E7591E1F25DC00380001BA6E = {
 			isa = PBXGroup;
 			children = (
 				E7591E2A25DC00380001BA6E /* Appmarks */,
 				E792B81B25DC2ADB0039D800 /* ShareExtension */,
+				E742172325DEC71900D98FF6 /* AppmarksFramework */,
 				E7591E2925DC00380001BA6E /* Products */,
+				E742178925DED62900D98FF6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,6 +208,7 @@
 			children = (
 				E7591E2825DC00380001BA6E /* Appmarks.app */,
 				E792B81A25DC2ADB0039D800 /* ShareExtension.appex */,
+				E742172225DEC71900D98FF6 /* AppmarksFramework.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,15 +222,10 @@
 				E7591E2B25DC00380001BA6E /* AppmarksApp.swift */,
 				E7591E2D25DC00380001BA6E /* ContentView.swift */,
 				E7591E2F25DC00380001BA6E /* Assets.xcassets */,
-				E7591E3425DC00390001BA6E /* Persistence.swift */,
 				E7591E3925DC00390001BA6E /* Info.plist */,
-				E7591E3625DC00390001BA6E /* Appmarks.xcdatamodeld */,
 				E7591E3125DC00380001BA6E /* Preview Content */,
-				E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */,
-				E7591E4425DC02570001BA6E /* ClipboardUtil.swift */,
 				E7591E4725DC02900001BA6E /* HostingController.swift */,
 				E7591E4A25DC02D00001BA6E /* UIColor+Extensions.swift */,
-				E792B83425DC42A80039D800 /* AppIdUtil.swift */,
 			);
 			path = Appmarks;
 			sourceTree = "<group>";
@@ -164,6 +250,7 @@
 		E792B81B25DC2ADB0039D800 /* ShareExtension */ = {
 			isa = PBXGroup;
 			children = (
+				E742174425DECB8200D98FF6 /* ShareExtension.entitlements */,
 				E792B81C25DC2ADB0039D800 /* ShareViewController.swift */,
 				E792B81E25DC2ADB0039D800 /* MainInterface.storyboard */,
 				E792B82125DC2ADB0039D800 /* Info.plist */,
@@ -184,7 +271,38 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		E742171D25DEC71900D98FF6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E742172625DEC71900D98FF6 /* AppmarksFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		E742172125DEC71900D98FF6 /* AppmarksFramework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E742172E25DEC71900D98FF6 /* Build configuration list for PBXNativeTarget "AppmarksFramework" */;
+			buildPhases = (
+				E742171D25DEC71900D98FF6 /* Headers */,
+				E742171E25DEC71900D98FF6 /* Sources */,
+				E742171F25DEC71900D98FF6 /* Frameworks */,
+				E742172025DEC71900D98FF6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AppmarksFramework;
+			packageProductDependencies = (
+			);
+			productName = AppmarksFramework;
+			productReference = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		E7591E2725DC00380001BA6E /* Appmarks */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7591E3C25DC00390001BA6E /* Build configuration list for PBXNativeTarget "Appmarks" */;
@@ -193,11 +311,13 @@
 				E7591E2525DC00380001BA6E /* Frameworks */,
 				E7591E2625DC00380001BA6E /* Resources */,
 				E792B82525DC2ADB0039D800 /* Embed App Extensions */,
+				E742172A25DEC71900D98FF6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				E792B82325DC2ADB0039D800 /* PBXTargetDependency */,
+				E742172825DEC71900D98FF6 /* PBXTargetDependency */,
 			);
 			name = Appmarks;
 			packageProductDependencies = (
@@ -216,12 +336,17 @@
 				E792B81625DC2ADB0039D800 /* Sources */,
 				E792B81725DC2ADB0039D800 /* Frameworks */,
 				E792B81825DC2ADB0039D800 /* Resources */,
+				E742178E25DED62900D98FF6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E742178D25DED62900D98FF6 /* PBXTargetDependency */,
 			);
 			name = ShareExtension;
+			packageProductDependencies = (
+				E742179425DEDAAB00D98FF6 /* SDWebImageSwiftUI */,
+			);
 			productName = ShareExtension;
 			productReference = E792B81A25DC2ADB0039D800 /* ShareExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -235,6 +360,10 @@
 				LastSwiftUpdateCheck = 1240;
 				LastUpgradeCheck = 1240;
 				TargetAttributes = {
+					E742172125DEC71900D98FF6 = {
+						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
+					};
 					E7591E2725DC00380001BA6E = {
 						CreatedOnToolsVersion = 12.4;
 					};
@@ -263,11 +392,19 @@
 			targets = (
 				E7591E2725DC00380001BA6E /* Appmarks */,
 				E792B81925DC2ADB0039D800 /* ShareExtension */,
+				E742172125DEC71900D98FF6 /* AppmarksFramework */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E742172025DEC71900D98FF6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7591E2625DC00380001BA6E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -288,23 +425,31 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E742171E25DEC71900D98FF6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E742173725DEC7AB00D98FF6 /* CoreDataStack.swift in Sources */,
+				E742177425DED10600D98FF6 /* AppmarksDataModel.xcdatamodeld in Sources */,
+				E742179825DEDBBC00D98FF6 /* AppIdUtil.swift in Sources */,
+				E742179E25DEF91900D98FF6 /* CreateGroupScreen.swift in Sources */,
+				E742179A25DEDE2A00D98FF6 /* ClipboardUtil.swift in Sources */,
+				E742179025DEDA2C00D98FF6 /* AppleiTunesAPI.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7591E2425DC00380001BA6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7591E3825DC00390001BA6E /* Appmarks.xcdatamodeld in Sources */,
 				E792B85225DE4BDF0039D800 /* EditGroupScreen.swift in Sources */,
 				E792B84A25DD16900039D800 /* CreateGroupScreen.swift in Sources */,
 				E792B84E25DD57D20039D800 /* CreateAppmarkScreen.swift in Sources */,
 				E792B84425DD14BC0039D800 /* GroupScreen.swift in Sources */,
-				E792B83525DC42A80039D800 /* AppIdUtil.swift in Sources */,
 				E7591E5025DC02FC0001BA6E /* BookmarkedAppView.swift in Sources */,
-				E7591E4225DC023E0001BA6E /* AppleiTunesAPI.swift in Sources */,
-				E7591E3525DC00390001BA6E /* Persistence.swift in Sources */,
 				E7591E2E25DC00380001BA6E /* ContentView.swift in Sources */,
 				E7591E4B25DC02D00001BA6E /* UIColor+Extensions.swift in Sources */,
 				E7591E4825DC02900001BA6E /* HostingController.swift in Sources */,
-				E7591E4525DC02570001BA6E /* ClipboardUtil.swift in Sources */,
 				E792B83F25DD084B0039D800 /* GroupView.swift in Sources */,
 				E7591E2C25DC00380001BA6E /* AppmarksApp.swift in Sources */,
 			);
@@ -321,6 +466,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E742172825DEC71900D98FF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E742172125DEC71900D98FF6 /* AppmarksFramework */;
+			targetProxy = E742172725DEC71900D98FF6 /* PBXContainerItemProxy */;
+		};
+		E742178D25DED62900D98FF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E742172125DEC71900D98FF6 /* AppmarksFramework */;
+			targetProxy = E742178C25DED62900D98FF6 /* PBXContainerItemProxy */;
+		};
 		E792B82325DC2ADB0039D800 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E792B81925DC2ADB0039D800 /* ShareExtension */;
@@ -340,6 +495,69 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E742172C25DEC71900D98FF6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = A2Q8595W43;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AppmarksFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamcottle.ios.AppmarksFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		E742172D25DEC71900D98FF6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = A2Q8595W43;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = AppmarksFramework/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.liamcottle.ios.AppmarksFramework;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		E7591E3A25DC00390001BA6E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -507,6 +725,7 @@
 		E792B82625DC2ADB0039D800 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2Q8595W43;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
@@ -526,6 +745,7 @@
 		E792B82725DC2ADB0039D800 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = ShareExtension/ShareExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A2Q8595W43;
 				INFOPLIST_FILE = ShareExtension/Info.plist;
@@ -545,6 +765,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E742172E25DEC71900D98FF6 /* Build configuration list for PBXNativeTarget "AppmarksFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E742172C25DEC71900D98FF6 /* Debug */,
+				E742172D25DEC71900D98FF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E7591E2325DC00380001BA6E /* Build configuration list for PBXProject "Appmarks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -602,6 +831,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E742179425DEDAAB00D98FF6 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E7591E5325DC03420001BA6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
 		E7591E5425DC03420001BA6E /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E7591E5325DC03420001BA6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
@@ -620,13 +854,13 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		E7591E3625DC00390001BA6E /* Appmarks.xcdatamodeld */ = {
+		E742173125DEC75800D98FF6 /* AppmarksDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E7591E3725DC00390001BA6E /* Appmarks.xcdatamodel */,
+				E742173225DEC75800D98FF6 /* AppmarksDataModel.xcdatamodel */,
 			);
-			currentVersion = E7591E3725DC00390001BA6E /* Appmarks.xcdatamodel */;
-			path = Appmarks.xcdatamodeld;
+			currentVersion = E742173225DEC75800D98FF6 /* AppmarksDataModel.xcdatamodel */;
+			path = AppmarksDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

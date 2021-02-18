@@ -7,12 +7,13 @@
 
 import Foundation
 import SwiftUI
+import AppmarksFramework
 
 struct GroupScreen : View {
     
     @Environment(\.managedObjectContext) var context
     
-    @ObservedObject var group: Group
+    @ObservedObject var group: AppmarksFramework.Group
     @State private var isShowingEditGroupScreen = false
     
     @ViewBuilder

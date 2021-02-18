@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BookmarkedApp" representedClassName="BookmarkedApp" syncable="YES" codeGenerationType="class">
+        <attribute name="artistName" optional="YES" attributeType="String"/>
+        <attribute name="artworkUrl512" optional="YES" attributeType="String"/>
+        <attribute name="currency" optional="YES" attributeType="String"/>
+        <attribute name="formattedPrice" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="trackId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="trackName" optional="YES" attributeType="String"/>
+        <attribute name="trackViewUrl" optional="YES" attributeType="String"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="bookmarkedApps" inverseEntity="Group"/>
+    </entity>
+    <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="bookmarkedApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookmarkedApp" inverseName="group" inverseEntity="BookmarkedApp"/>
+    </entity>
+    <elements>
+        <element name="BookmarkedApp" positionX="-36" positionY="9" width="128" height="178"/>
+        <element name="Group" positionX="0" positionY="108" width="128" height="88"/>
+    </elements>
+</model>

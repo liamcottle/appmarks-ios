@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SDWebImageSwiftUI
+import AppmarksFramework
 
 struct CreateAppmarkScreen: View {
     
@@ -17,15 +18,15 @@ struct CreateAppmarkScreen: View {
     @Binding var isShowing: Bool
     
     @FetchRequest(
-        entity: Group.entity(),
+        entity: AppmarksFramework.Group.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Group.name, ascending: true),
+            NSSortDescriptor(keyPath: \AppmarksFramework.Group.name, ascending: true),
         ],
         predicate: nil
-    ) var groups: FetchedResults<Group>
+    ) var groups: FetchedResults<AppmarksFramework.Group>
     
     @State private var appInfo: AppInfo?
-    @State private var group: Group?
+    @State private var group: AppmarksFramework.Group?
     
     @State private var isShowingCreateGroupScreen = false
     
@@ -67,11 +68,11 @@ struct CreateAppmarkScreen: View {
                     Picker(selection: $group, label: Text("Group")) {
                         
                         Text("No Group")
-                            .tag(nil as Group?)
+                            .tag(nil as AppmarksFramework.Group?)
                             .foregroundColor(.gray)
                         
                         ForEach(groups) { group in
-                            Text(group.name ?? "").tag(group as Group?)
+                            Text(group.name ?? "").tag(group as AppmarksFramework.Group?)
                         }
                         
                     }

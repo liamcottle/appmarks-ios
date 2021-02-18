@@ -7,9 +7,9 @@
 
 import Foundation
 
-class AppIdUtil {
+public class AppIdUtil {
     
-    static func findAppIdInString(string: String) -> String? {
+    public static func findAppIdInString(string: String) -> String? {
         let matched = matches(for: "/id([0-9]+)", in: string)
         if(matched.count > 0){
             return matched[0].replacingOccurrences(of: "/id", with: "")

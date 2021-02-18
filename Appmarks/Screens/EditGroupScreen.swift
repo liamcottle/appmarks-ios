@@ -7,17 +7,18 @@
 
 import Foundation
 import SwiftUI
+import AppmarksFramework
 
 struct EditGroupScreen: View {
     
     @Environment(\.managedObjectContext) var context
     
     @Binding var isShowing: Bool
-    @ObservedObject var group: Group
+    @ObservedObject var group: AppmarksFramework.Group
     
     @State var name: String
     
-    init(isShowing: Binding<Bool>, group: Group) {
+    init(isShowing: Binding<Bool>, group: AppmarksFramework.Group) {
         self._isShowing = isShowing
         self.group = group
         self._name = State(initialValue: group.name ?? "")

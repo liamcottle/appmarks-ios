@@ -8,10 +8,11 @@
 import Foundation
 import SwiftUI
 import SDWebImageSwiftUI
+import AppmarksFramework
 
 struct BookmarkedAppView: View {
     
-    var bookmarkedApp: BookmarkedApp
+    var bookmarkedApp: AppmarksFramework.BookmarkedApp
 
     var body: some View {
         HStack {

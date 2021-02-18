@@ -7,25 +7,25 @@
 
 import Foundation
 
-struct AppLookupResponse: Codable {
-    var results: [AppInfo]
+public struct AppLookupResponse: Codable {
+    public var results: [AppInfo]
 }
 
-struct AppInfo: Codable {
-    var trackId: Int64
-    var trackName: String
-    var kind: String
-    var artistName: String
-    var price: Double?
-    var artworkUrl512: String
-    var trackViewUrl: String
-    var formattedPrice: String?
-    var currency: String
+public struct AppInfo: Codable {
+    public var trackId: Int64
+    public var trackName: String
+    public var kind: String
+    public var artistName: String
+    public var price: Double?
+    public var artworkUrl512: String
+    public var trackViewUrl: String
+    public var formattedPrice: String?
+    public var currency: String
 }
 
-class AppleiTunesAPI {
+public class AppleiTunesAPI {
     
-    static func lookupByIds(ids: [String], successCallback: @escaping (AppLookupResponse)->(), errorCallback: @escaping (Error?)->()) {
+    public static func lookupByIds(ids: [String], successCallback: @escaping (AppLookupResponse)->(), errorCallback: @escaping (Error?)->()) {
         
         // generate lookup url
         guard let url = URL(string: "http://itunes.apple.com/lookup?id=" + ids.joined(separator: ",")) else {

@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-class ClipboardUtil {
+public class ClipboardUtil {
     
-    static func getAppIdFromClipboard() -> Int64? {
+    public static func getAppIdFromClipboard() -> Int64? {
         if let text = UIPasteboard.general.string {
             if let appId = AppIdUtil.findAppIdInString(string: text) {
                 if let id = Int64(appId) {

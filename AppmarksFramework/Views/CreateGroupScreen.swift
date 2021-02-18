@@ -1,15 +1,14 @@
 //
 //  CreateGroupScreen.swift
-//  Appmarks
+//  AppmarksFramework
 //
-//  Created by Liam Cottle on 17/02/21.
+//  Created by Liam Cottle on 19/02/21.
 //
 
 import Foundation
 import SwiftUI
-import AppmarksFramework
 
-struct CreateGroupScreen: View {
+public struct CreateGroupScreen: View {
     
     @Environment(\.managedObjectContext) var context
     
@@ -23,12 +22,12 @@ struct CreateGroupScreen: View {
         self._createdGroup = .constant(nil)
     }
     
-    init(isShowing: Binding<Bool>, createdGroup: Binding<AppmarksFramework.Group?>) {
+    public init(isShowing: Binding<Bool>, createdGroup: Binding<AppmarksFramework.Group?>) {
         self._isShowing = isShowing
         self._createdGroup = createdGroup
     }
 
-    var body: some View {
+    public var body: some View {
         NavigationView {
             List {
                 Section {

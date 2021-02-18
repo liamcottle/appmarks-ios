@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AppmarksFramework
 
 struct SharedUrlKey: EnvironmentKey {
     static var defaultValue: String? {
@@ -28,12 +29,12 @@ extension EnvironmentValues {
 struct AppmarksApp: App {
     
     @State var sharedUrl: String?
-    let persistenceController = PersistenceController.shared
+    let persistentContainer = CoreDataStack.sharedInstance.persistentContainer
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, persistentContainer.viewContext)
                 .environment(\.sharedUrl, sharedUrl)
                 .onOpenURL { url in
                     

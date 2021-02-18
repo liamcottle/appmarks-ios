@@ -7,10 +7,11 @@
 
 import Foundation
 import SwiftUI
+import AppmarksFramework
 
 struct GroupView: View {
     
-    @ObservedObject var group: Group
+    @ObservedObject var group: AppmarksFramework.Group
 
     var body: some View {
         HStack {

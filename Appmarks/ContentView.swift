@@ -9,6 +9,7 @@ import CoreData
 import SwiftUI
 import SwiftUIRefresh
 import MultiModal
+import AppmarksFramework
 
 // app icon gradient colours: #102C5B #718EB8
 let themeColour = UIColor(rgb: 0x102C5B, alphaVal: 1);
@@ -48,30 +49,30 @@ struct ContentView: View {
     
     // get list of all bookmarked apps so they can be refreshed
     @FetchRequest(
-        entity: BookmarkedApp.entity(),
+        entity: AppmarksFramework.BookmarkedApp.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \BookmarkedApp.trackName, ascending: true),
+            NSSortDescriptor(keyPath: \AppmarksFramework.BookmarkedApp.trackName, ascending: true),
         ],
         predicate: nil
-    ) var bookmarkedApps: FetchedResults<BookmarkedApp>
+    ) var bookmarkedApps: FetchedResults<AppmarksFramework.BookmarkedApp>
     
     // get list of ungrouped bookmarked apps to show on main screen
     @FetchRequest(
-        entity: BookmarkedApp.entity(),
+        entity: AppmarksFramework.BookmarkedApp.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \BookmarkedApp.trackName, ascending: true),
+            NSSortDescriptor(keyPath: \AppmarksFramework.BookmarkedApp.trackName, ascending: true),
         ],
         predicate: NSPredicate(format: "group == null")
-    ) var ungroupedBookmarkedApps: FetchedResults<BookmarkedApp>
+    ) var ungroupedBookmarkedApps: FetchedResults<AppmarksFramework.BookmarkedApp>
     
     // get list of groups to show on main screen
     @FetchRequest(
-        entity: Group.entity(),
+        entity: AppmarksFramework.Group.entity(),
         sortDescriptors: [
-            NSSortDescriptor(keyPath: \Group.name, ascending: true),
+            NSSortDescriptor(keyPath: \AppmarksFramework.Group.name, ascending: true),
         ],
         predicate: nil
-    ) var groups: FetchedResults<Group>
+    ) var groups: FetchedResults<AppmarksFramework.Group>
     
     init() {
         UINavigationBar.appearance().tintColor = themeTextColour
@@ -178,7 +179,7 @@ struct ContentView: View {
         
     }
     
-    func deleteGroup(group: Group) {
+    func deleteGroup(group: AppmarksFramework.Group) {
         
         // log
         print("deleteGroup: \(group.name ?? "")")
@@ -192,6 +193,16 @@ struct ContentView: View {
         } catch {
             print(error)
         }
+        
+    }
+    
+    func onDidAppear() {
+        
+        // automatically merge remote changes into coredata
+        CoreDataStack.sharedInstance.initRemoteChangeObserver()
+        
+        // refresh bookmarked app info
+        refreshBookmarkedApps()
         
     }
     
@@ -304,7 +315,7 @@ struct ContentView: View {
             // section of groups
             if !groups.isEmpty {
                 Section {
-                    ForEach(groups, id: \.id) { (group: Group) in
+                    ForEach(groups, id: \.id) { (group: AppmarksFramework.Group) in
                         NavigationLink(destination: GroupScreen(group: group)) {
                             GroupView(group: group)
                                 .padding(.vertical, 10)
@@ -359,7 +370,7 @@ struct ContentView: View {
                 }
                 
             })
-            .onAppear(perform: refreshBookmarkedApps)
+            .onAppear(perform: onDidAppear)
             .navigationBarTitle(Text("Appmarks"), displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
