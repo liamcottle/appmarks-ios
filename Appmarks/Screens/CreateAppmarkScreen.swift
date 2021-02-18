@@ -78,6 +78,7 @@ struct CreateAppmarkScreen: View {
             Section {
                 NavigationLink(destination: CreateGroupScreen($group)) {
                     Text("Create Group")
+                        .foregroundColor(.blue)
                 }
             }
             
