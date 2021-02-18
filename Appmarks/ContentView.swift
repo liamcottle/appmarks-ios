@@ -335,12 +335,14 @@ struct ContentView: View {
             HStack {
                 listOrEmptyView
             }
-            .multiModal {
+            .multiModal { // using multiModal requires us to pass in env
                 $0.sheet(isPresented: $isShowingCreateAppmarkScreen) {
                     CreateAppmarkScreen(id: $createAppmarkScreenAppId, isShowing: $isShowingCreateAppmarkScreen)
+                        .environment(\.managedObjectContext, context)
                 }
                 $0.sheet(isPresented: $isShowingCreateGroupScreen) {
                     CreateGroupScreen(isShowing: $isShowingCreateGroupScreen)
+                        .environment(\.managedObjectContext, context)
                 }
             }
             .pullToRefresh(isShowing: $isLoading) {
