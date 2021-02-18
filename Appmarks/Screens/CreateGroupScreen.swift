@@ -14,6 +14,15 @@ struct CreateGroupScreen: View {
     @Environment(\.presentationMode) var presentation
     
     @State private var name = ""
+    @Binding var createdGroup: Group?
+    
+    init(_ createdGroup: Binding<Group?>) {
+        self._createdGroup = createdGroup
+    }
+
+    init() {
+        self._createdGroup = .constant(nil)
+    }
 
     var body: some View {
         Form {
@@ -45,6 +54,9 @@ struct CreateGroupScreen: View {
         
         // save coredata
         try? context.save()
+        
+        // update binding
+        createdGroup = group
         
         // dismiss this screen
         self.presentation.wrappedValue.dismiss()
