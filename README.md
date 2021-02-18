@@ -1,5 +1,5 @@
 <p align="center">
-<a href="https://github.com/liamcottle/appmarks-ios"><img src="https://github.com/liamcottle/appmarks-ios/blob/main/Appmarks.png?raw=true" width="150"></a>
+<a href="https://github.com/liamcottle/appmarks-ios"><img src="Appmarks.png" width="150"></a>
 </p>
 
 <h2 align="center">Appmarks</h2>
