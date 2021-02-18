@@ -8,6 +8,7 @@
 import CoreData
 import SwiftUI
 import SwiftUIRefresh
+import MultiModal
 
 // app icon gradient colours: #102C5B #718EB8
 let themeColour = UIColor(rgb: 0x102C5B, alphaVal: 1);
@@ -121,8 +122,15 @@ struct ContentView: View {
         // log
         print("addApp: [\(id)]")
         
-        // show screen to create appmark
-        showCreateAppmarkScreen(appId: id)
+        // // close existing create screen
+        isShowingCreateAppmarkScreen = false
+        
+        // show screen to create appmark after closing previous (must use dispatch queue 🤷‍♂️)
+        DispatchQueue.main.async {
+            showCreateAppmarkScreen(appId: id)
+        }
+        
+        
         
     }
     
@@ -327,6 +335,14 @@ struct ContentView: View {
             HStack {
                 listOrEmptyView
             }
+            .multiModal {
+                $0.sheet(isPresented: $isShowingCreateAppmarkScreen) {
+                    CreateAppmarkScreen(id: $createAppmarkScreenAppId, isShowing: $isShowingCreateAppmarkScreen)
+                }
+                $0.sheet(isPresented: $isShowingCreateGroupScreen) {
+                    CreateGroupScreen(isShowing: $isShowingCreateGroupScreen)
+                }
+            }
             .pullToRefresh(isShowing: $isLoading) {
                 refreshBookmarkedApps()
             }
@@ -341,14 +357,6 @@ struct ContentView: View {
                 }
                 
             })
-            .background(
-                NavigationLink("", destination: CreateAppmarkScreen(id: createAppmarkScreenAppId), isActive: $isShowingCreateAppmarkScreen)
-                    .isDetailLink(false)
-            )
-            .background(
-                NavigationLink("", destination: CreateGroupScreen(), isActive: $isShowingCreateGroupScreen)
-                    .isDetailLink(false)
-            )
             .onAppear(perform: refreshBookmarkedApps)
             .navigationBarTitle(Text("Appmarks"), displayMode: .inline)
             .toolbar {
@@ -368,7 +376,7 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        self.isShowingCreateGroupScreen = true
+                        isShowingCreateGroupScreen = true
                     }) {
                         Image(systemName: "folder.badge.plus")
                     }

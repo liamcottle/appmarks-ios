@@ -29,6 +29,7 @@
 		E792B84A25DD16900039D800 /* CreateGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84925DD16900039D800 /* CreateGroupScreen.swift */; };
 		E792B84E25DD57D20039D800 /* CreateAppmarkScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84D25DD57D20039D800 /* CreateAppmarkScreen.swift */; };
 		E792B85225DE4BDF0039D800 /* EditGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B85125DE4BDF0039D800 /* EditGroupScreen.swift */; };
+		E792B85E25DE988C0039D800 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = E792B85D25DE988C0039D800 /* MultiModal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E792B85E25DE988C0039D800 /* MultiModal in Frameworks */,
 				E7591E5925DC03640001BA6E /* SwiftUIRefresh in Frameworks */,
 				E7591E5525DC03420001BA6E /* SDWebImageSwiftUI in Frameworks */,
 			);
@@ -201,6 +203,7 @@
 			packageProductDependencies = (
 				E7591E5425DC03420001BA6E /* SDWebImageSwiftUI */,
 				E7591E5825DC03640001BA6E /* SwiftUIRefresh */,
+				E792B85D25DE988C0039D800 /* MultiModal */,
 			);
 			productName = Appmarks;
 			productReference = E7591E2825DC00380001BA6E /* Appmarks.app */;
@@ -252,6 +255,7 @@
 			packageReferences = (
 				E7591E5325DC03420001BA6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				E7591E5725DC03640001BA6E /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */,
+				E792B85C25DE988C0039D800 /* XCRemoteSwiftPackageReference "MultiModal" */,
 			);
 			productRefGroup = E7591E2925DC00380001BA6E /* Products */;
 			projectDirPath = "";
@@ -587,6 +591,14 @@
 				minimumVersion = 0.0.3;
 			};
 		};
+		E792B85C25DE988C0039D800 /* XCRemoteSwiftPackageReference "MultiModal" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/davdroman/MultiModal";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -599,6 +611,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E7591E5725DC03640001BA6E /* XCRemoteSwiftPackageReference "SwiftUIRefresh" */;
 			productName = SwiftUIRefresh;
+		};
+		E792B85D25DE988C0039D800 /* MultiModal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E792B85C25DE988C0039D800 /* XCRemoteSwiftPackageReference "MultiModal" */;
+			productName = MultiModal;
 		};
 /* End XCSwiftPackageProductDependency section */
 

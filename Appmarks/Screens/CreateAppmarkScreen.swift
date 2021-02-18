@@ -11,10 +11,10 @@ import SDWebImageSwiftUI
 
 struct CreateAppmarkScreen: View {
     
-    var id: Int64
-    
     @Environment(\.managedObjectContext) var context
-    @Environment(\.presentationMode) var presentation
+    
+    @Binding var id: Int64
+    @Binding var isShowing: Bool
     
     @FetchRequest(
         entity: Group.entity(),
@@ -26,76 +26,91 @@ struct CreateAppmarkScreen: View {
     
     @State private var appInfo: AppInfo?
     @State private var group: Group?
-
+    
+    @State private var isShowingCreateGroupScreen = false
+    
     var body: some View {
-        List {
-            
-            Section {
+        NavigationView {
+            List {
                 
-                // show app info
-                HStack {
+                Section {
                     
-                    WebImage(url: URL(string: appInfo?.artworkUrl512 ?? ""))
-                        .resizable()
-                        .placeholder {
-                            Rectangle().foregroundColor(.gray)
+                    // show app info
+                    HStack {
+                        
+                        WebImage(url: URL(string: appInfo?.artworkUrl512 ?? ""))
+                            .resizable()
+                            .placeholder {
+                                Rectangle().foregroundColor(.gray)
+                            }
+                            .indicator(.activity)
+                            .scaledToFit()
+                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+                            .frame(width: 65, height: 65, alignment: .center)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.gray, lineWidth: 0.25)
+                            )
+                        
+                        VStack(alignment: .leading) {
+                            Text(appInfo?.trackName ?? "Loading App Info")
+                                .font(Font.subheadline.bold())
+                            if appInfo?.artistName != nil {
+                                Text(appInfo?.artistName ?? "")
+                                    .font(Font.subheadline)
+                            }
                         }
-                        .indicator(.activity)
-                        .scaledToFit()
-                        .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                        .frame(width: 65, height: 65, alignment: .center)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.gray, lineWidth: 0.25)
-                        )
+                        
+                    }
                     
-                    VStack(alignment: .leading) {
-                        Text(appInfo?.trackName ?? "Loading App Info")
-                            .font(Font.subheadline.bold())
-                        if appInfo?.artistName != nil {
-                            Text(appInfo?.artistName ?? "")
-                                .font(Font.subheadline)
+                    // choose group
+                    Picker(selection: $group, label: Text("Group")) {
+                        
+                        Text("No Group")
+                            .tag(nil as Group?)
+                            .foregroundColor(.gray)
+                        
+                        ForEach(groups) { group in
+                            Text(group.name ?? "").tag(group as Group?)
                         }
+                        
                     }
                     
                 }
                 
-                // choose group
-                Picker(selection: $group, label: Text("Group")) {
-                    
-                    Text("No Group")
-                        .tag(nil as Group?)
-                        .foregroundColor(.gray)
-                    
-                    ForEach(groups) { group in
-                        Text(group.name ?? "").tag(group as Group?)
+                Section {
+                    Button(action: {
+                        self.isShowingCreateGroupScreen = true
+                    }) {
+                        Text("Create Group")
+                            .foregroundColor(.blue)
                     }
-                    
                 }
                 
             }
-            
-            Section {
-                NavigationLink(destination: CreateGroupScreen($group)) {
-                    Text("Create Group")
-                        .foregroundColor(.blue)
-                }
+            .sheet(isPresented: $isShowingCreateGroupScreen) {
+                CreateGroupScreen(isShowing: $isShowingCreateGroupScreen, createdGroup: $group)
             }
-            
-        }
-        .listStyle(GroupedListStyle())
-        .onAppear(perform: fetchAppInfo)
-        .navigationTitle("Create Appmark")
-        .toolbar {
-            ToolbarItem {
-                Button("Done", action: {
-                    createAppmark()
-                })
+            .listStyle(GroupedListStyle())
+            .onAppear(perform: fetchAppInfo)
+            .navigationBarTitle(Text("Create Appmark"), displayMode: .inline)
+            .toolbar {
+                ToolbarItem {
+                    Button("Done", action: {
+                        createAppmark()
+                    })
+                }
             }
         }
     }
     
     func fetchAppInfo() {
+        
+        // don't refetch app info
+        if appInfo != nil {
+            return
+        }
+        
         AppleiTunesAPI.lookupByIds(ids: [String(id)]) { response in
             
             // update state from response
@@ -139,7 +154,7 @@ struct CreateAppmarkScreen: View {
         try? context.save()
 
         // dismiss this screen
-        self.presentation.wrappedValue.dismiss()
+        isShowing = false
         
     }
     

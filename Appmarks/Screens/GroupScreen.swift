@@ -10,9 +10,9 @@ import SwiftUI
 
 struct GroupScreen : View {
     
-    @ObservedObject var group: Group
     @Environment(\.managedObjectContext) var context
     
+    @ObservedObject var group: Group
     @State private var isShowingEditGroupScreen = false
     
     @ViewBuilder
@@ -52,11 +52,11 @@ struct GroupScreen : View {
                     self.isShowingEditGroupScreen = true
                 }) {
                     Image(systemName: "pencil")
-                }.sheet(isPresented: $isShowingEditGroupScreen) {
-                    NavigationView {
-                        EditGroupScreen(group: group)
-                    }
                 }
+            }
+        }.sheet(isPresented: $isShowingEditGroupScreen) {
+            NavigationView {
+                EditGroupScreen(isShowing: $isShowingEditGroupScreen, group: group)
             }
         }
     }

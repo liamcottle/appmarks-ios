@@ -11,33 +11,36 @@ import SwiftUI
 struct CreateGroupScreen: View {
     
     @Environment(\.managedObjectContext) var context
-    @Environment(\.presentationMode) var presentation
     
-    @State private var name = ""
+    @Binding var isShowing: Bool
     @Binding var createdGroup: Group?
     
-    init(_ createdGroup: Binding<Group?>) {
+    @State private var name = ""
+    
+    init(isShowing: Binding<Bool>) {
+        self._isShowing = isShowing
+        self._createdGroup = .constant(nil)
+    }
+    
+    init(isShowing: Binding<Bool>, createdGroup: Binding<Group?>) {
+        self._isShowing = isShowing
         self._createdGroup = createdGroup
     }
 
-    init() {
-        self._createdGroup = .constant(nil)
-    }
-
     var body: some View {
-        List {
-            Section {
-                TextField("Name", text: $name)
+        NavigationView {
+            List {
+                Section {
+                    TextField("Name", text: $name)
+                }
             }
-        }
-        .listStyle(GroupedListStyle())
-        .navigationTitle("Create Group")
-        .toolbar {
-            ToolbarItem {
-                Button("Done", action: {
-                    createGroup()
-                })
-            }
+            .listStyle(GroupedListStyle())
+            .navigationBarTitle(Text("Create Group"), displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: {
+                createGroup()
+            }) {
+                Text("Done").bold()
+            })
         }
     }
     
@@ -59,8 +62,8 @@ struct CreateGroupScreen: View {
         // update binding
         createdGroup = group
         
-        // dismiss this screen
-        self.presentation.wrappedValue.dismiss()
+        // dismiss
+        isShowing = false
         
     }
     

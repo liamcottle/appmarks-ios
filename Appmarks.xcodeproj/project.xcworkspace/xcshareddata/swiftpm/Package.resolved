@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "MultiModal",
+        "repositoryURL": "https://github.com/davdroman/MultiModal",
+        "state": {
+          "branch": null,
+          "revision": "e6f76c7851dcef105e1f52b8213ddbd50705e6ff",
+          "version": "2.0.1"
+        }
+      },
+      {
         "package": "SDWebImage",
         "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
         "state": {

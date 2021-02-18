@@ -11,13 +11,14 @@ import SwiftUI
 struct EditGroupScreen: View {
     
     @Environment(\.managedObjectContext) var context
-    @Environment(\.presentationMode) var presentation
     
+    @Binding var isShowing: Bool
     @ObservedObject var group: Group
     
     @State var name: String
     
-    init(group: Group) {
+    init(isShowing: Binding<Bool>, group: Group) {
+        self._isShowing = isShowing
         self.group = group
         self._name = State(initialValue: group.name ?? "")
     }
@@ -53,7 +54,7 @@ struct EditGroupScreen: View {
         try? context.save()
         
         // dismiss this screen
-        self.presentation.wrappedValue.dismiss()
+        isShowing = false
         
     }
     
