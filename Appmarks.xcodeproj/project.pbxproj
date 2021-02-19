@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E742172625DEC71900D98FF6 /* AppmarksFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = E742172425DEC71900D98FF6 /* AppmarksFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E742172925DEC71900D98FF6 /* AppmarksFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; };
 		E742172B25DEC71900D98FF6 /* AppmarksFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E742173725DEC7AB00D98FF6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */; };
@@ -102,7 +101,6 @@
 
 /* Begin PBXFileReference section */
 		E742172225DEC71900D98FF6 /* AppmarksFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppmarksFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E742172425DEC71900D98FF6 /* AppmarksFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppmarksFramework.h; sourceTree = "<group>"; };
 		E742172525DEC71900D98FF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E742173225DEC75800D98FF6 /* AppmarksDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppmarksDataModel.xcdatamodel; sourceTree = "<group>"; };
 		E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				E7591E4425DC02570001BA6E /* ClipboardUtil.swift */,
 				E792B83425DC42A80039D800 /* AppIdUtil.swift */,
 				E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */,
-				E742172425DEC71900D98FF6 /* AppmarksFramework.h */,
 				E742172525DEC71900D98FF6 /* Info.plist */,
 				E742173125DEC75800D98FF6 /* AppmarksDataModel.xcdatamodeld */,
 				E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */,
@@ -279,7 +276,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E742172625DEC71900D98FF6 /* AppmarksFramework.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
