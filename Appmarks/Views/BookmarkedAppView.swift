@@ -73,7 +73,8 @@ struct BookmarkedAppView: View {
         }.multiModal { // using multiModal requires us to pass in env
             $0.sheet(isPresented: $isShowingEditAppmarkScreen) {
                 EditAppmarkScreen(isShowing: $isShowingEditAppmarkScreen, bookmarkedApp: bookmarkedApp)
-            }.environment(\.managedObjectContext, context)
+                    .environment(\.managedObjectContext, context)
+            }
             $0.actionSheet(isPresented: $isShowingConfirmDeleteSheet) {
                 ActionSheet(
                     title: Text(bookmarkedApp.trackName ?? "Unknown App"),
