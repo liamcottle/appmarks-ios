@@ -9,12 +9,15 @@ import Foundation
 import SwiftUI
 import SDWebImageSwiftUI
 import AppmarksFramework
+import MultiModal
 
 struct BookmarkedAppView: View {
     
     @Environment(\.managedObjectContext) var context
     
     var bookmarkedApp: AppmarksFramework.BookmarkedApp
+    @State private var isShowingConfirmDeleteSheet = false
+    @State private var isShowingConfirmRemoveFromGroupSheet = false
 
     var body: some View {
         HStack {
@@ -65,30 +68,56 @@ struct BookmarkedAppView: View {
                 
             }
             
-        }.contextMenu {
+        }.multiModal { // using multiModal requires us to pass in env
+            $0.actionSheet(isPresented: $isShowingConfirmDeleteSheet) {
+                ActionSheet(
+                    title: Text(bookmarkedApp.trackName ?? "Unknown App"),
+                    buttons: [
+                        .destructive(Text("Delete Appmark")) {
+                            
+                            // delete bookmarked app
+                            context.delete(bookmarkedApp)
+                            
+                            // save coredata
+                            try? context.save()
+                            
+                        },
+                        .cancel(Text("Cancel"))
+                    ]
+                )
+            }.environment(\.managedObjectContext, context)
+            $0.actionSheet(isPresented: $isShowingConfirmRemoveFromGroupSheet) {
+                ActionSheet(
+                    title: Text(bookmarkedApp.trackName ?? "Unknown App"),
+                    buttons: [
+                        .destructive(Text("Remove from Group")) {
+                            
+                            // remove bookmarked app from group
+                            bookmarkedApp.group = nil
+                            
+                            // save coredata
+                            try? context.save()
+                            
+                        },
+                        .cancel(Text("Cancel"))
+                    ]
+                )
+            }.environment(\.managedObjectContext, context)
+        }
+        .contextMenu {
             
+            // confirm that user wants to delete appmark
             Button {
-                
-                // delete bookmarked app
-                context.delete(bookmarkedApp)
-                
-                // save coredata
-                try? context.save()
-                
+                isShowingConfirmDeleteSheet = true
             } label: {
                 Label("Delete", systemImage: "trash")
             }
             
+            // show option to remove appmark from group
             if bookmarkedApp.group != nil {
                 
                 Button {
-                    
-                    // remove bookmarked app from group
-                    bookmarkedApp.group = nil
-                    
-                    // save coredata
-                    try? context.save()
-                    
+                    isShowingConfirmRemoveFromGroupSheet = true
                 } label: {
                     Label("Remove from Group", systemImage: "folder.badge.minus")
                 }
