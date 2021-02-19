@@ -43,14 +43,16 @@ public class CoreDataStack {
         storeDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
         container.persistentStoreDescriptions = [storeDescription]
         
-        // set current process bundle id as the transaction author
-        container.viewContext.transactionAuthor = Bundle.main.bundleIdentifier
-        
         // load the stores
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            
             if let error = error {
                 fatalError("Unresolved error \(error), \(error)")
             }
+            
+            // set current process bundle id as the transaction author
+            container.viewContext.transactionAuthor = Bundle.main.bundleIdentifier
+            
         })
         
         return container
