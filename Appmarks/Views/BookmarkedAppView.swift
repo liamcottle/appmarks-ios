@@ -12,6 +12,8 @@ import AppmarksFramework
 
 struct BookmarkedAppView: View {
     
+    @Environment(\.managedObjectContext) var context
+    
     var bookmarkedApp: AppmarksFramework.BookmarkedApp
 
     var body: some View {
@@ -60,6 +62,36 @@ struct BookmarkedAppView: View {
                 })
                 .frame(height: 30, alignment: .center)
                 .buttonStyle(ViewButtonStyle())
+                
+            }
+            
+        }.contextMenu {
+            
+            Button {
+                
+                // delete bookmarked app
+                context.delete(bookmarkedApp)
+                
+                // save coredata
+                try? context.save()
+                
+            } label: {
+                Label("Delete", systemImage: "trash")
+            }
+            
+            if bookmarkedApp.group != nil {
+                
+                Button {
+                    
+                    // remove bookmarked app from group
+                    bookmarkedApp.group = nil
+                    
+                    // save coredata
+                    try? context.save()
+                    
+                } label: {
+                    Label("Remove from Group", systemImage: "folder.badge.minus")
+                }
                 
             }
             
