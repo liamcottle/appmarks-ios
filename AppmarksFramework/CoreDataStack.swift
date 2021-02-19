@@ -22,14 +22,14 @@ public extension URL {
 }
 
 /// subclass of NSPersistentContainer is used so it automatically finds the correct data model
-public class PersistentContainer: NSPersistentContainer {}
+public class PersistentContainer: NSPersistentCloudKitContainer {}
 
 public class CoreDataStack {
     
     public static let sharedInstance = CoreDataStack()
     
     private var historyTimestamp: Date = Date.init()
-    public var persistentContainer: NSPersistentContainer = {
+    public var persistentContainer: NSPersistentCloudKitContainer = {
         
         // create persistent container from xcdatamodeld file
         let container = PersistentContainer(name: "AppmarksDataModel")
@@ -41,9 +41,12 @@ public class CoreDataStack {
         // we want to track history and merge it in when a remote change notification is received
         storeDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
         storeDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-        container.persistentStoreDescriptions = [storeDescription]
+        
+        // set icloud container to use
+        storeDescription.cloudKitContainerOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.com.liamcottle.ios.Appmarks")
         
         // load the stores
+        container.persistentStoreDescriptions = [storeDescription]
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             
             if let error = error {
@@ -54,6 +57,10 @@ public class CoreDataStack {
             container.viewContext.transactionAuthor = Bundle.main.bundleIdentifier
             
         })
+        
+        // merge in changes from iCloud
+        container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
         
         return container
         
