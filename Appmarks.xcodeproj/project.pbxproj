@@ -19,6 +19,7 @@
 		E742179825DEDBBC00D98FF6 /* AppIdUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83425DC42A80039D800 /* AppIdUtil.swift */; };
 		E742179A25DEDE2A00D98FF6 /* ClipboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4425DC02570001BA6E /* ClipboardUtil.swift */; };
 		E742179E25DEF91900D98FF6 /* CreateGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742179D25DEF91900D98FF6 /* CreateGroupScreen.swift */; };
+		E74217C725DFAED500D98FF6 /* EditAppmarkScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74217C625DFAED500D98FF6 /* EditAppmarkScreen.swift */; };
 		E7591E2C25DC00380001BA6E /* AppmarksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E2B25DC00380001BA6E /* AppmarksApp.swift */; };
 		E7591E2E25DC00380001BA6E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E2D25DC00380001BA6E /* ContentView.swift */; };
 		E7591E3025DC00380001BA6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7591E2F25DC00380001BA6E /* Assets.xcassets */; };
@@ -107,6 +108,7 @@
 		E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		E742174425DECB8200D98FF6 /* ShareExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareExtension.entitlements; sourceTree = "<group>"; };
 		E742179D25DEF91900D98FF6 /* CreateGroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupScreen.swift; sourceTree = "<group>"; };
+		E74217C625DFAED500D98FF6 /* EditAppmarkScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAppmarkScreen.swift; sourceTree = "<group>"; };
 		E7591E2825DC00380001BA6E /* Appmarks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appmarks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7591E2B25DC00380001BA6E /* AppmarksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppmarksApp.swift; sourceTree = "<group>"; };
 		E7591E2D25DC00380001BA6E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				E792B84925DD16900039D800 /* CreateGroupScreen.swift */,
 				E792B84D25DD57D20039D800 /* CreateAppmarkScreen.swift */,
 				E792B85125DE4BDF0039D800 /* EditGroupScreen.swift */,
+				E74217C625DFAED500D98FF6 /* EditAppmarkScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E74217C725DFAED500D98FF6 /* EditAppmarkScreen.swift in Sources */,
 				E792B85225DE4BDF0039D800 /* EditGroupScreen.swift in Sources */,
 				E792B84A25DD16900039D800 /* CreateGroupScreen.swift in Sources */,
 				E792B84E25DD57D20039D800 /* CreateAppmarkScreen.swift in Sources */,

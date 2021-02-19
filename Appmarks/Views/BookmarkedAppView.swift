@@ -16,6 +16,8 @@ struct BookmarkedAppView: View {
     @Environment(\.managedObjectContext) var context
     
     var bookmarkedApp: AppmarksFramework.BookmarkedApp
+    
+    @State private var isShowingEditAppmarkScreen = false
     @State private var isShowingConfirmDeleteSheet = false
     @State private var isShowingConfirmRemoveFromGroupSheet = false
 
@@ -69,6 +71,9 @@ struct BookmarkedAppView: View {
             }
             
         }.multiModal { // using multiModal requires us to pass in env
+            $0.sheet(isPresented: $isShowingEditAppmarkScreen) {
+                EditAppmarkScreen(isShowing: $isShowingEditAppmarkScreen, bookmarkedApp: bookmarkedApp)
+            }.environment(\.managedObjectContext, context)
             $0.actionSheet(isPresented: $isShowingConfirmDeleteSheet) {
                 ActionSheet(
                     title: Text(bookmarkedApp.trackName ?? "Unknown App"),
@@ -124,6 +129,8 @@ struct BookmarkedAppView: View {
                 
             }
             
+        }.onTapGesture {
+            isShowingEditAppmarkScreen = true
         }
     }
 }
