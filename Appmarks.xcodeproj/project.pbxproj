@@ -12,7 +12,6 @@
 		E742173725DEC7AB00D98FF6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */; };
 		E742177425DED10600D98FF6 /* AppmarksDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E742173125DEC75800D98FF6 /* AppmarksDataModel.xcdatamodeld */; };
 		E742178A25DED62900D98FF6 /* AppmarksFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; };
-		E742178B25DED62900D98FF6 /* AppmarksFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E742179025DEDA2C00D98FF6 /* AppleiTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */; };
 		E742179525DEDAAB00D98FF6 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E742179425DEDAAB00D98FF6 /* SDWebImageSwiftUI */; };
 		E742179825DEDBBC00D98FF6 /* AppIdUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83425DC42A80039D800 /* AppIdUtil.swift */; };
@@ -72,17 +71,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E742172B25DEC71900D98FF6 /* AppmarksFramework.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		E742178E25DED62900D98FF6 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				E742178B25DED62900D98FF6 /* AppmarksFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,7 +327,6 @@
 				E792B81625DC2ADB0039D800 /* Sources */,
 				E792B81725DC2ADB0039D800 /* Frameworks */,
 				E792B81825DC2ADB0039D800 /* Resources */,
-				E742178E25DED62900D98FF6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
