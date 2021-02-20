@@ -33,7 +33,6 @@
 		E792B82425DC2ADB0039D800 /* ShareExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E792B81A25DC2ADB0039D800 /* ShareExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E792B83F25DD084B0039D800 /* GroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83E25DD084B0039D800 /* GroupView.swift */; };
 		E792B84425DD14BC0039D800 /* GroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84325DD14BC0039D800 /* GroupScreen.swift */; };
-		E792B84A25DD16900039D800 /* NewGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84925DD16900039D800 /* NewGroupScreen.swift */; };
 		E792B84E25DD57D20039D800 /* NewAppmarkScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B84D25DD57D20039D800 /* NewAppmarkScreen.swift */; };
 		E792B85225DE4BDF0039D800 /* EditGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B85125DE4BDF0039D800 /* EditGroupScreen.swift */; };
 		E792B85E25DE988C0039D800 /* MultiModal in Frameworks */ = {isa = PBXBuildFile; productRef = E792B85D25DE988C0039D800 /* MultiModal */; };
@@ -116,7 +115,6 @@
 		E792B83425DC42A80039D800 /* AppIdUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIdUtil.swift; sourceTree = "<group>"; };
 		E792B83E25DD084B0039D800 /* GroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupView.swift; sourceTree = "<group>"; };
 		E792B84325DD14BC0039D800 /* GroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupScreen.swift; sourceTree = "<group>"; };
-		E792B84925DD16900039D800 /* NewGroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGroupScreen.swift; sourceTree = "<group>"; };
 		E792B84D25DD57D20039D800 /* NewAppmarkScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAppmarkScreen.swift; sourceTree = "<group>"; };
 		E792B85125DE4BDF0039D800 /* EditGroupScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGroupScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -153,10 +151,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E72EB28325E127A3006C3DD6 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				E742179D25DEF91900D98FF6 /* NewGroupScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		E742172325DEC71900D98FF6 /* AppmarksFramework */ = {
 			isa = PBXGroup;
 			children = (
-				E742179C25DEF90700D98FF6 /* Views */,
+				E72EB28325E127A3006C3DD6 /* Screens */,
 				E7591E4425DC02570001BA6E /* ClipboardUtil.swift */,
 				E792B83425DC42A80039D800 /* AppIdUtil.swift */,
 				E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */,
@@ -173,14 +179,6 @@
 				E74217CD25DFCAB900D98FF6 /* CloudKit.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E742179C25DEF90700D98FF6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				E742179D25DEF91900D98FF6 /* NewGroupScreen.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		E7591E1F25DC00380001BA6E = {
@@ -253,7 +251,6 @@
 			isa = PBXGroup;
 			children = (
 				E792B84325DD14BC0039D800 /* GroupScreen.swift */,
-				E792B84925DD16900039D800 /* NewGroupScreen.swift */,
 				E792B84D25DD57D20039D800 /* NewAppmarkScreen.swift */,
 				E792B85125DE4BDF0039D800 /* EditGroupScreen.swift */,
 				E74217C625DFAED500D98FF6 /* EditAppmarkScreen.swift */,
@@ -434,7 +431,6 @@
 			files = (
 				E74217C725DFAED500D98FF6 /* EditAppmarkScreen.swift in Sources */,
 				E792B85225DE4BDF0039D800 /* EditGroupScreen.swift in Sources */,
-				E792B84A25DD16900039D800 /* NewGroupScreen.swift in Sources */,
 				E792B84E25DD57D20039D800 /* NewAppmarkScreen.swift in Sources */,
 				E792B84425DD14BC0039D800 /* GroupScreen.swift in Sources */,
 				E7591E5025DC02FC0001BA6E /* BookmarkedAppView.swift in Sources */,

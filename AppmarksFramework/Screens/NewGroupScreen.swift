@@ -17,7 +17,7 @@ public struct NewGroupScreen: View {
     
     @State private var name = ""
     
-    init(isShowing: Binding<Bool>) {
+    public init(isShowing: Binding<Bool>) {
         self._isShowing = isShowing
         self._createdGroup = .constant(nil)
     }
