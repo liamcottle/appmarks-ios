@@ -42,9 +42,9 @@ struct ContentView: View {
     @State private var isAlertShowing = false
     @State private var activeAlert: ActiveAlert = .About
     
-    @State private var isShowingCreateGroupScreen = false
+    @State private var isShowingNewGroupScreen = false
     
-    @State private var isShowingCreateAppmarkScreen = false
+    @State private var isShowingNewAppmarkScreen = false
     @State private var createAppmarkScreenAppId: Int64 = 0
     
     // get list of all bookmarked apps so they can be refreshed
@@ -97,7 +97,7 @@ struct ContentView: View {
     
     func showCreateAppmarkScreen(appId: Int64) {
         createAppmarkScreenAppId = appId
-        isShowingCreateAppmarkScreen = true
+        isShowingNewAppmarkScreen = true
     }
     
     func isAppBookmarked(id: Int64) -> Bool {
@@ -124,7 +124,7 @@ struct ContentView: View {
         print("addApp: [\(id)]")
         
         // // close existing create screen
-        isShowingCreateAppmarkScreen = false
+        isShowingNewAppmarkScreen = false
         
         // show screen to create appmark after closing previous (must use dispatch queue 🤷‍♂️)
         DispatchQueue.main.async {
@@ -347,12 +347,12 @@ struct ContentView: View {
                 listOrEmptyView
             }
             .multiModal { // using multiModal requires us to pass in env
-                $0.sheet(isPresented: $isShowingCreateAppmarkScreen) {
-                    CreateAppmarkScreen(id: $createAppmarkScreenAppId, isShowing: $isShowingCreateAppmarkScreen)
+                $0.sheet(isPresented: $isShowingNewAppmarkScreen) {
+                    NewAppmarkScreen(id: $createAppmarkScreenAppId, isShowing: $isShowingNewAppmarkScreen)
                         .environment(\.managedObjectContext, context)
                 }
-                $0.sheet(isPresented: $isShowingCreateGroupScreen) {
-                    CreateGroupScreen(isShowing: $isShowingCreateGroupScreen)
+                $0.sheet(isPresented: $isShowingNewGroupScreen) {
+                    NewGroupScreen(isShowing: $isShowingNewGroupScreen)
                         .environment(\.managedObjectContext, context)
                 }
             }
@@ -389,7 +389,7 @@ struct ContentView: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        isShowingCreateGroupScreen = true
+                        isShowingNewGroupScreen = true
                     }) {
                         Image(systemName: "folder.badge.plus")
                     }

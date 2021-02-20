@@ -130,7 +130,9 @@ struct BookmarkedAppView: View {
                 
             }
             
-        }.onTapGesture {
+        }
+        .contentShape(Rectangle())
+        .onTapGesture {
             isShowingEditAppmarkScreen = true
         }
     }

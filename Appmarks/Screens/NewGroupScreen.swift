@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import AppmarksFramework
 
-struct CreateGroupScreen: View {
+struct NewGroupScreen: View {
     
     @Environment(\.managedObjectContext) var context
     
@@ -36,12 +36,19 @@ struct CreateGroupScreen: View {
                 }
             }
             .listStyle(GroupedListStyle())
-            .navigationBarTitle(Text("Create Group"), displayMode: .inline)
-            .navigationBarItems(trailing: Button(action: {
-                createGroup()
-            }) {
-                Text("Done").bold()
-            })
+            .navigationBarTitle(Text("New Group"), displayMode: .inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: {
+                        isShowing = false
+                    })
+                }
+                ToolbarItem {
+                    Button("Done", action: {
+                        createGroup()
+                    })
+                }
+            }
         }
     }
     

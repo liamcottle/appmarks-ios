@@ -10,7 +10,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 import AppmarksFramework
 
-struct CreateAppmarkScreen: View {
+struct NewAppmarkScreen: View {
     
     @Environment(\.managedObjectContext) var context
     
@@ -28,7 +28,7 @@ struct CreateAppmarkScreen: View {
     @State private var appInfo: AppInfo?
     @State private var group: AppmarksFramework.Group?
     
-    @State private var isShowingCreateGroupScreen = false
+    @State private var isShowingNewGroupScreen = false
     
     var body: some View {
         NavigationView {
@@ -81,21 +81,26 @@ struct CreateAppmarkScreen: View {
                 
                 Section {
                     Button(action: {
-                        self.isShowingCreateGroupScreen = true
+                        self.isShowingNewGroupScreen = true
                     }) {
-                        Text("Create Group")
+                        Text("New Group")
                             .foregroundColor(.blue)
                     }
                 }
                 
             }
-            .sheet(isPresented: $isShowingCreateGroupScreen) {
-                CreateGroupScreen(isShowing: $isShowingCreateGroupScreen, createdGroup: $group)
+            .sheet(isPresented: $isShowingNewGroupScreen) {
+                NewGroupScreen(isShowing: $isShowingNewGroupScreen, createdGroup: $group)
             }
             .listStyle(GroupedListStyle())
             .onAppear(perform: fetchAppInfo)
-            .navigationBarTitle(Text("Create Appmark"), displayMode: .inline)
+            .navigationBarTitle(Text("New Appmark"), displayMode: .inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: {
+                        isShowing = false
+                    })
+                }
                 ToolbarItem {
                     Button("Done", action: {
                         createAppmark()

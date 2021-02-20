@@ -33,6 +33,11 @@ struct EditGroupScreen: View {
         .listStyle(GroupedListStyle())
         .navigationBarTitle("Edit Group", displayMode: .inline)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button("Cancel", action: {
+                    isShowing = false
+                })
+            }
             ToolbarItem {
                 Button("Done", action: {
                     saveGroup()

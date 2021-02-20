@@ -12,7 +12,7 @@ import AppmarksFramework
 import SDWebImageSwiftUI
 import SwiftUI
 
-struct CreateAppmarkScreen: View {
+struct NewAppmarkScreen: View {
     
     @Environment(\.managedObjectContext) var context
     @Environment(\.extensionContext) var extensionContext
@@ -30,7 +30,7 @@ struct CreateAppmarkScreen: View {
     @State private var appInfo: AppInfo?
     @State private var group: AppmarksFramework.Group?
     
-    @State private var isShowingCreateGroupScreen = false
+    @State private var isShowingNewGroupScreen = false
     
     func findURLAttachment() -> NSItemProvider? {
         
@@ -105,9 +105,9 @@ struct CreateAppmarkScreen: View {
                     
                     Section {
                         Button(action: {
-                            self.isShowingCreateGroupScreen = true
+                            self.isShowingNewGroupScreen = true
                         }) {
-                            Text("Create Group")
+                            Text("New Group")
                                 .foregroundColor(.blue)
                         }
                     }
@@ -119,13 +119,18 @@ struct CreateAppmarkScreen: View {
                 }
                 
             }
-            .sheet(isPresented: $isShowingCreateGroupScreen) {
-                CreateGroupScreen(isShowing: $isShowingCreateGroupScreen, createdGroup: $group)
+            .sheet(isPresented: $isShowingNewGroupScreen) {
+                NewGroupScreen(isShowing: $isShowingNewGroupScreen, createdGroup: $group)
             }
             .listStyle(GroupedListStyle())
             .onAppear(perform: onDidAppear)
-            .navigationBarTitle(Text("Create Appmark"), displayMode: .inline)
+            .navigationBarTitle(Text("New Appmark"), displayMode: .inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Cancel", action: {
+                        extensionContext?.completeRequest(returningItems: nil, completionHandler: nil)
+                    })
+                }
                 ToolbarItem {
                     if(isValidShare && !isErrorLoading){
                         Button("Done", action: {
@@ -260,7 +265,7 @@ class ShareViewController: UIViewController {
         
         // create swiftui hosting controller
         let viewController = UIHostingController(rootView: AnyView(
-            CreateAppmarkScreen()
+            NewAppmarkScreen()
                 .environment(\.managedObjectContext, context)
                 .environment(\.extensionContext, extensionContext)
         ))
