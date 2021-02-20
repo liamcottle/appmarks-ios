@@ -254,6 +254,7 @@
 			children = (
 				E72EB2A525E133ED006C3DD6 /* Extensions */,
 				E7591E4E25DC02F40001BA6E /* Views */,
+				E7591E2B25DC00380001BA6E /* AppmarksApp.swift */,
 				E7591E2D25DC00380001BA6E /* ContentView.swift */,
 				E7591E4725DC02900001BA6E /* HostingController.swift */,
 				E7591E2F25DC00380001BA6E /* Assets.xcassets */,
@@ -275,7 +276,6 @@
 		E7591E4E25DC02F40001BA6E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E7591E2B25DC00380001BA6E /* AppmarksApp.swift */,
 				E72EB28C25E12D76006C3DD6 /* Models */,
 				E792B84225DD14A10039D800 /* Screens */,
 			);
