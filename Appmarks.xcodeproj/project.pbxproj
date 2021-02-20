@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E72EB29425E12F89006C3DD6 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E72EB29325E12F89006C3DD6 /* SDWebImageSwiftUI */; };
 		E742172925DEC71900D98FF6 /* AppmarksFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; };
 		E742172B25DEC71900D98FF6 /* AppmarksFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E742173725DEC7AB00D98FF6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */; };
 		E742177425DED10600D98FF6 /* AppmarksDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E742173125DEC75800D98FF6 /* AppmarksDataModel.xcdatamodeld */; };
 		E742178A25DED62900D98FF6 /* AppmarksFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */; };
 		E742179025DEDA2C00D98FF6 /* AppleiTunesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */; };
-		E742179525DEDAAB00D98FF6 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E742179425DEDAAB00D98FF6 /* SDWebImageSwiftUI */; };
 		E742179825DEDBBC00D98FF6 /* AppIdUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B83425DC42A80039D800 /* AppIdUtil.swift */; };
 		E742179A25DEDE2A00D98FF6 /* ClipboardUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4425DC02570001BA6E /* ClipboardUtil.swift */; };
 		E742179E25DEF91900D98FF6 /* NewGroupScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = E742179D25DEF91900D98FF6 /* NewGroupScreen.swift */; };
@@ -26,7 +26,6 @@
 		E7591E4825DC02900001BA6E /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4725DC02900001BA6E /* HostingController.swift */; };
 		E7591E4B25DC02D00001BA6E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4A25DC02D00001BA6E /* UIColor+Extensions.swift */; };
 		E7591E5025DC02FC0001BA6E /* BookmarkedAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7591E4F25DC02FC0001BA6E /* BookmarkedAppView.swift */; };
-		E7591E5525DC03420001BA6E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E7591E5425DC03420001BA6E /* SDWebImageSwiftUI */; };
 		E7591E5925DC03640001BA6E /* SwiftUIRefresh in Frameworks */ = {isa = PBXBuildFile; productRef = E7591E5825DC03640001BA6E /* SwiftUIRefresh */; };
 		E792B81D25DC2ADB0039D800 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E792B81C25DC2ADB0039D800 /* ShareViewController.swift */; };
 		E792B82025DC2ADB0039D800 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E792B81E25DC2ADB0039D800 /* MainInterface.storyboard */; };
@@ -124,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E72EB29425E12F89006C3DD6 /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,7 +135,6 @@
 				E742172925DEC71900D98FF6 /* AppmarksFramework.framework in Frameworks */,
 				E792B85E25DE988C0039D800 /* MultiModal in Frameworks */,
 				E7591E5925DC03640001BA6E /* SwiftUIRefresh in Frameworks */,
-				E7591E5525DC03420001BA6E /* SDWebImageSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +142,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E742179525DEDAAB00D98FF6 /* SDWebImageSwiftUI in Frameworks */,
 				E742178A25DED62900D98FF6 /* AppmarksFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -159,16 +157,65 @@
 			path = Screens;
 			sourceTree = "<group>";
 		};
-		E742172325DEC71900D98FF6 /* AppmarksFramework */ = {
+		E72EB28825E12CBA006C3DD6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E792B83425DC42A80039D800 /* AppIdUtil.swift */,
+				E7591E4425DC02570001BA6E /* ClipboardUtil.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E72EB28925E12D0D006C3DD6 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		E72EB28A25E12D42006C3DD6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				E72EB28325E127A3006C3DD6 /* Screens */,
-				E7591E4425DC02570001BA6E /* ClipboardUtil.swift */,
-				E792B83425DC42A80039D800 /* AppIdUtil.swift */,
-				E7591E4125DC023E0001BA6E /* AppleiTunesAPI.swift */,
-				E742172525DEC71900D98FF6 /* Info.plist */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E72EB28C25E12D76006C3DD6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E7591E4F25DC02FC0001BA6E /* BookmarkedAppView.swift */,
+				E792B83E25DD084B0039D800 /* GroupView.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E72EB2A525E133ED006C3DD6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E7591E4A25DC02D00001BA6E /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E72EB2A625E1387F006C3DD6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
 				E742173125DEC75800D98FF6 /* AppmarksDataModel.xcdatamodeld */,
 				E742173625DEC7AB00D98FF6 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E742172325DEC71900D98FF6 /* AppmarksFramework */ = {
+			isa = PBXGroup;
+			children = (
+				E72EB28925E12D0D006C3DD6 /* API */,
+				E72EB2A625E1387F006C3DD6 /* CoreData */,
+				E72EB28A25E12D42006C3DD6 /* Views */,
+				E72EB28825E12CBA006C3DD6 /* Utils */,
+				E742172525DEC71900D98FF6 /* Info.plist */,
 			);
 			path = AppmarksFramework;
 			sourceTree = "<group>";
@@ -205,16 +252,14 @@
 		E7591E2A25DC00380001BA6E /* Appmarks */ = {
 			isa = PBXGroup;
 			children = (
-				E792B83125DC357F0039D800 /* Appmarks.entitlements */,
-				E792B84225DD14A10039D800 /* Screens */,
+				E72EB2A525E133ED006C3DD6 /* Extensions */,
 				E7591E4E25DC02F40001BA6E /* Views */,
-				E7591E2B25DC00380001BA6E /* AppmarksApp.swift */,
 				E7591E2D25DC00380001BA6E /* ContentView.swift */,
+				E7591E4725DC02900001BA6E /* HostingController.swift */,
 				E7591E2F25DC00380001BA6E /* Assets.xcassets */,
+				E792B83125DC357F0039D800 /* Appmarks.entitlements */,
 				E7591E3925DC00390001BA6E /* Info.plist */,
 				E7591E3125DC00380001BA6E /* Preview Content */,
-				E7591E4725DC02900001BA6E /* HostingController.swift */,
-				E7591E4A25DC02D00001BA6E /* UIColor+Extensions.swift */,
 			);
 			path = Appmarks;
 			sourceTree = "<group>";
@@ -230,8 +275,9 @@
 		E7591E4E25DC02F40001BA6E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E7591E4F25DC02FC0001BA6E /* BookmarkedAppView.swift */,
-				E792B83E25DD084B0039D800 /* GroupView.swift */,
+				E7591E2B25DC00380001BA6E /* AppmarksApp.swift */,
+				E72EB28C25E12D76006C3DD6 /* Models */,
+				E792B84225DD14A10039D800 /* Screens */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -239,8 +285,8 @@
 		E792B81B25DC2ADB0039D800 /* ShareExtension */ = {
 			isa = PBXGroup;
 			children = (
-				E742174425DECB8200D98FF6 /* ShareExtension.entitlements */,
 				E792B81C25DC2ADB0039D800 /* ShareViewController.swift */,
+				E742174425DECB8200D98FF6 /* ShareExtension.entitlements */,
 				E792B81E25DC2ADB0039D800 /* MainInterface.storyboard */,
 				E792B82125DC2ADB0039D800 /* Info.plist */,
 			);
@@ -286,6 +332,7 @@
 			);
 			name = AppmarksFramework;
 			packageProductDependencies = (
+				E72EB29325E12F89006C3DD6 /* SDWebImageSwiftUI */,
 			);
 			productName = AppmarksFramework;
 			productReference = E742172225DEC71900D98FF6 /* AppmarksFramework.framework */;
@@ -309,7 +356,6 @@
 			);
 			name = Appmarks;
 			packageProductDependencies = (
-				E7591E5425DC03420001BA6E /* SDWebImageSwiftUI */,
 				E7591E5825DC03640001BA6E /* SwiftUIRefresh */,
 				E792B85D25DE988C0039D800 /* MultiModal */,
 			);
@@ -332,7 +378,6 @@
 			);
 			name = ShareExtension;
 			packageProductDependencies = (
-				E742179425DEDAAB00D98FF6 /* SDWebImageSwiftUI */,
 			);
 			productName = ShareExtension;
 			productReference = E792B81A25DC2ADB0039D800 /* ShareExtension.appex */;
@@ -826,12 +871,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E742179425DEDAAB00D98FF6 /* SDWebImageSwiftUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E7591E5325DC03420001BA6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
-		};
-		E7591E5425DC03420001BA6E /* SDWebImageSwiftUI */ = {
+		E72EB29325E12F89006C3DD6 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E7591E5325DC03420001BA6E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
