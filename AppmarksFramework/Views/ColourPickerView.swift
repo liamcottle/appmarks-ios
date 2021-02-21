@@ -52,7 +52,7 @@ public struct ColourPickerView: View {
 
                     if selection == colour {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color(UIColor(hexString: colour)), lineWidth: 3)
+                            .stroke(Color(UIColor.lightGray), lineWidth: 3)
                             .frame(width: 50, height: 50)
                     }
                 }

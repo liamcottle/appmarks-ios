@@ -37,7 +37,7 @@ public struct IconPickerView: View {
     }
     
     var unselectedIconColour: Color {
-        return Color(.gray)
+        return Color(UIColor.lightGray)
     }
 
     public var body: some View {
@@ -71,7 +71,7 @@ public struct IconPickerView: View {
 
                     if selection == icon {
                         RoundedRectangle(cornerRadius: 10)
-                            .stroke(selectedIconColour, lineWidth: 3)
+                            .stroke(Color(UIColor.lightGray), lineWidth: 3)
                             .frame(width: 50, height: 50)
                     }
                     
