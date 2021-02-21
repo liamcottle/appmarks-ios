@@ -36,7 +36,7 @@ public struct ColourPickerView: View {
         LazyVGrid(columns: columns, spacing: 10) {
             ForEach(colours, id: \.self){ colour in
                 ZStack {
-                    Circle()
+                    RoundedRectangle(cornerRadius: 10)
                         .fill(Color(UIColor(hexString: colour)))
                         .frame(width: 40, height: 40)
                         .onTapGesture(perform: {
@@ -51,7 +51,7 @@ public struct ColourPickerView: View {
                         .padding(10)
 
                     if selection == colour {
-                        Circle()
+                        RoundedRectangle(cornerRadius: 10)
                             .stroke(Color(UIColor(hexString: colour)), lineWidth: 3)
                             .frame(width: 50, height: 50)
                     }

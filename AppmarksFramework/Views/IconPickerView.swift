@@ -51,7 +51,7 @@ public struct IconPickerView: View {
                 let iconColour = selection == icon ? selectedIconColour : unselectedIconColour
                 ZStack {
                     
-                    Circle()
+                    RoundedRectangle(cornerRadius: 10)
                         .fill(iconColour)
                         .frame(width: 40, height: 40)
                         .onTapGesture(perform: {
@@ -70,7 +70,7 @@ public struct IconPickerView: View {
                         .foregroundColor(.white)
 
                     if selection == icon {
-                        Circle()
+                        RoundedRectangle(cornerRadius: 10)
                             .stroke(selectedIconColour, lineWidth: 3)
                             .frame(width: 50, height: 50)
                     }

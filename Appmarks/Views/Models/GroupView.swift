@@ -24,9 +24,9 @@ struct GroupView: View {
             // icon
             ZStack {
                 
-                Circle()
+                RoundedRectangle(cornerRadius: 10)
                     .fill(Color(UIColor(hexString: group.colour ?? Constants.themeColour)))
-                    .frame(width: 30, height: 30)
+                    .frame(width: 35, height: 35)
                 
                 Image(systemName: group.icon ?? Constants.defaultGroupIcon)
                     .imageScale(.small)
