@@ -16,17 +16,21 @@ struct TitleView: View {
             Image(uiImage: UIImage(named: "AppmarksLogo") ?? UIImage())
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 125, alignment: .center)
+                .frame(width: 100, alignment: .center)
                 .accessibility(hidden: true)
 
             Text("Welcome to")
-                .customTitleText()
+                .fontWeight(.black)
+                .font(.system(size: 34))
 
             Text("Appmarks")
-                .customTitleText()
+                .fontWeight(.black)
+                .font(.system(size: 34))
                 .foregroundColor(.mainColor)
             
-        }.padding(.vertical, 30)
+        }
+        .padding(.top, 15)
+        .padding(.bottom, 15)
     }
 }
 
@@ -100,14 +104,6 @@ struct ButtonModifier: ViewModifier {
 extension View {
     func customButton() -> ModifiedContent<Self, ButtonModifier> {
         return modifier(ButtonModifier())
-    }
-}
-
-extension Text {
-    func customTitleText() -> Text {
-        self
-            .fontWeight(.black)
-            .font(.system(size: 36))
     }
 }
 
