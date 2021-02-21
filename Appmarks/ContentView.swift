@@ -36,11 +36,14 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) var context
     @Environment(\.sharedUrl) var sharedUrl
     
+    @ObservedObject var userSettings = UserSettings()
+    
     @State private var isLoading = false
     
     @State private var isAlertShowing = false
     @State private var activeAlert: ActiveAlert = .About
     
+    @State private var isShowingWelcomeScreen = false
     @State private var isShowingNewGroupScreen = false
     
     @State private var isShowingNewAppmarkScreen = false
@@ -203,6 +206,12 @@ struct ContentView: View {
         // refresh bookmarked app info
         refreshBookmarkedApps()
         
+        // show welcome screen if user hasn't seen it
+        if(!userSettings.hasSeenWelcomeScreen){
+            isShowingWelcomeScreen = true
+            userSettings.hasSeenWelcomeScreen = true
+        }
+        
     }
     
     func refreshBookmarkedApps() {
@@ -346,6 +355,9 @@ struct ContentView: View {
                 listOrEmptyView
             }
             .multiModal { // using multiModal requires us to pass in env
+                $0.sheet(isPresented: $isShowingWelcomeScreen) {
+                    WelcomeScreen(isShowing: $isShowingWelcomeScreen)
+                }
                 $0.sheet(isPresented: $isShowingNewAppmarkScreen) {
                     NewAppmarkScreen(id: $createAppmarkScreenAppId, isShowing: $isShowingNewAppmarkScreen)
                         .environment(\.managedObjectContext, context)
