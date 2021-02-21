@@ -16,18 +16,28 @@ struct EditGroupScreen: View {
     @Binding var isShowing: Bool
     @ObservedObject var group: AppmarksFramework.Group
     
-    @State var name: String
+    @State private var name: String
+    @State private var icon: String?
+    @State private var colour: String?
     
     init(isShowing: Binding<Bool>, group: AppmarksFramework.Group) {
         self._isShowing = isShowing
         self.group = group
         self._name = State(initialValue: group.name ?? "")
+        self._icon = State(initialValue: group.icon ?? Constants.defaultGroupIcon)
+        self._colour = State(initialValue: group.colour ?? Constants.defaultGroupColour)
     }
 
     var body: some View {
         List {
             Section {
                 TextField("Name", text: $name)
+            }
+            Section(header: Text("Icon")) {
+                IconPickerView(selection: $icon, colour: $colour)
+            }
+            Section(header: Text("Colour")) {
+                ColourPickerView(selection: $colour)
             }
         }
         .listStyle(GroupedListStyle())
@@ -55,6 +65,8 @@ struct EditGroupScreen: View {
         
         // update group details
         group.name = name
+        group.icon = icon
+        group.colour = colour
         
         // save coredata
         try? context.save()

@@ -22,8 +22,17 @@ struct GroupView: View {
         HStack {
             
             // icon
-            Image(systemName: "folder")
-                .imageScale(.large)
+            ZStack {
+                
+                Circle()
+                    .fill(Color(UIColor(hexString: group.colour ?? Constants.themeColour)))
+                    .frame(width: 30, height: 30)
+                
+                Image(systemName: group.icon ?? Constants.defaultGroupIcon)
+                    .imageScale(.small)
+                    .foregroundColor(.white)
+                
+            }
             
             // group name
             Text(group.name ?? "")

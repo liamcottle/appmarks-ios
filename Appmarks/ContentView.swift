@@ -11,10 +11,9 @@ import SwiftUIRefresh
 import MultiModal
 import AppmarksFramework
 
-// app icon gradient colours: #102C5B #718EB8
-let themeColour = UIColor(rgb: 0x102C5B, alphaVal: 1);
-let themeColourLight = UIColor(rgb: 0x718EB8, alphaVal: 1);
-let themeTextColour = UIColor(rgb: 0xFFFFFF, alphaVal: 1);
+let themeColour = UIColor(hexString: Constants.themeColour);
+let themeColourLight = UIColor(hexString: Constants.themeColourLight);
+let themeTextColour = UIColor(hexString: Constants.themeTextColour);
 
 struct ViewButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {

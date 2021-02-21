@@ -52,7 +52,7 @@ struct GroupScreen : View {
                 Button(action: {
                     self.isShowingEditGroupScreen = true
                 }) {
-                    Image(systemName: "pencil")
+                    Text("Edit")
                 }
             }
         }.sheet(isPresented: $isShowingEditGroupScreen) {

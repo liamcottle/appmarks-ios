@@ -16,6 +16,8 @@ public struct NewGroupScreen: View {
     @Binding var createdGroup: AppmarksFramework.Group?
     
     @State private var name = ""
+    @State private var icon: String? = Constants.defaultGroupIcon
+    @State private var colour: String? = Constants.defaultGroupColour
     
     public init(isShowing: Binding<Bool>) {
         self._isShowing = isShowing
@@ -32,6 +34,12 @@ public struct NewGroupScreen: View {
             List {
                 Section {
                     TextField("Name", text: $name)
+                }
+                Section(header: Text("Icon")) {
+                    IconPickerView(selection: $icon, colour: $colour)
+                }
+                Section(header: Text("Colour")) {
+                    ColourPickerView(selection: $colour)
                 }
             }
             .listStyle(GroupedListStyle())
@@ -62,6 +70,8 @@ public struct NewGroupScreen: View {
         let group = Group(context: context)
         group.id = UUID()
         group.name = name
+        group.icon = icon
+        group.colour = colour
         
         // save coredata
         try? context.save()

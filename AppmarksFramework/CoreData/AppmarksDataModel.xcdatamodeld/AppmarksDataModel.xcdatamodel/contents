@@ -12,12 +12,14 @@
         <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Group" inverseName="bookmarkedApps" inverseEntity="Group"/>
     </entity>
     <entity name="Group" representedClassName="Group" syncable="YES" codeGenerationType="class">
+        <attribute name="colour" optional="YES" attributeType="String"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="bookmarkedApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookmarkedApp" inverseName="group" inverseEntity="BookmarkedApp"/>
     </entity>
     <elements>
         <element name="BookmarkedApp" positionX="-36" positionY="9" width="128" height="178"/>
-        <element name="Group" positionX="0" positionY="108" width="128" height="88"/>
+        <element name="Group" positionX="0" positionY="108" width="128" height="104"/>
     </elements>
 </model>
