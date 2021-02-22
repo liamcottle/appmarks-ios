@@ -451,7 +451,7 @@ struct ContentView: View {
                     Button(action: {
                         addAppFromClipboard()
                     }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "paperclip")
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
