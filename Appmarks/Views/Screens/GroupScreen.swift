@@ -24,13 +24,26 @@ struct GroupScreen : View {
             listView
         }
     }
-
+    
     var emptyView: some View {
         VStack {
-            Image(systemName: "bookmark.fill").imageScale(.large)
+            
+            Image(systemName: "bookmark")
+                .imageScale(.large)
+                .padding(.bottom, 5)
+            
             Text("This group is empty").bold()
-            Text("Fill it up with some Appmarks").foregroundColor(.gray)
-        }
+            Text("Share an app from the App Store")
+                .multilineTextAlignment(.center)
+                .foregroundColor(.gray)
+            
+            Button("Open the App Store", action: {
+                if let url = URL(string: "itms-apps://itunes.apple.com") {
+                    UIApplication.shared.open(url)
+                }
+            }).padding(.top, 5)
+            
+        }.padding(.horizontal, 25)
     }
 
     var listView: some View {
