@@ -16,10 +16,11 @@
         <attribute name="icon" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="bookmarkedApps" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BookmarkedApp" inverseName="group" inverseEntity="BookmarkedApp"/>
     </entity>
     <elements>
         <element name="BookmarkedApp" positionX="-36" positionY="9" width="128" height="178"/>
-        <element name="Group" positionX="0" positionY="108" width="128" height="104"/>
+        <element name="Group" positionX="0" positionY="108" width="128" height="119"/>
     </elements>
 </model>

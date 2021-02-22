@@ -71,6 +71,9 @@ struct ContentView: View {
     @FetchRequest(
         entity: AppmarksFramework.Group.entity(),
         sortDescriptors: [
+            NSSortDescriptor(
+                keyPath: \AppmarksFramework.Group.order,
+               ascending: true),
             NSSortDescriptor(keyPath: \AppmarksFramework.Group.name, ascending: true),
         ],
         predicate: nil
@@ -259,6 +262,58 @@ struct ContentView: View {
         }
     }
     
+    private func moveGroupRow(from source: IndexSet, to before: Int) {
+        
+        let firstIndex = source.min()!
+        let lastIndex = source.max()!
+        
+        let firstRowToReorder = (firstIndex < before) ? firstIndex : before
+        let lastRowToReorder = (lastIndex > (before-1)) ? lastIndex : (before-1)
+        
+        if firstRowToReorder != lastRowToReorder {
+            
+            var newOrder = firstRowToReorder
+            if newOrder < firstIndex {
+                // Moving dragged items up, so re-order dragged items first
+                
+                // Re-order dragged items
+                for index in source {
+                    groups[index].setValue(newOrder, forKey: "order")
+                    newOrder = newOrder + 1
+                }
+                
+                // Re-order non-dragged items
+                for rowToMove in firstRowToReorder..<lastRowToReorder {
+                    if !source.contains(rowToMove) {
+                        groups[rowToMove].setValue(newOrder, forKey: "order")
+                        newOrder = newOrder + 1
+                    }
+                }
+            } else {
+                // Moving dragged items down, so re-order dragged items last
+                
+                // Re-order non-dragged items
+                for rowToMove in firstRowToReorder...lastRowToReorder {
+                    if !source.contains(rowToMove) {
+                        groups[rowToMove].setValue(newOrder, forKey: "order")
+                        newOrder = newOrder + 1
+                    }
+                }
+                
+                // Re-order dragged items
+                for index in source {
+                    groups[index].setValue(newOrder, forKey: "order")
+                    newOrder = newOrder + 1
+                }
+            }
+            
+        }
+        
+        // save to coredata
+        try? context.save()
+        
+    }
+    
     func addAppFromClipboard() {
         
         // add app from app id on clipboard
@@ -330,6 +385,7 @@ struct ContentView: View {
                         }
                     }
                     .onDelete(perform: self.deleteGroupRow)
+                    .onMove(perform: self.moveGroupRow)
                 }
             }
             
@@ -391,12 +447,15 @@ struct ContentView: View {
                         Image(systemName: "bookmark.fill")
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
                         addAppFromClipboard()
                     }) {
                         Image(systemName: "plus")
                     }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
