@@ -62,10 +62,13 @@ struct GroupScreen : View {
         .navigationTitle(group.name ?? "Unknown Group")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     self.isShowingEditGroupScreen = true
                 }) {
-                    Text("Edit")
+                    Image(systemName: "gear")
                 }
             }
         }.sheet(isPresented: $isShowingEditGroupScreen) {
