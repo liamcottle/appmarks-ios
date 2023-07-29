@@ -31,7 +31,7 @@ Currently implemented features:
 
 # How it works
 
-When an an AppStore link is provided, the App ID is parsed from the URL and a request is made to the [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html) to retrieve its metadata.
+When an AppStore link is provided, the App ID is parsed from the URL and a request is made to the [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/LookupExamples.html) to retrieve its metadata.
 
 # License
 
