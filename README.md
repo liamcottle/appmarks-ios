@@ -10,7 +10,7 @@ Welcome | Create Appmark | Main Content | Group
 
 # About
 
-Appmarks is an iOS app developed with SwiftUI that lets you bookmark apps from the AppStore.
+Appmarks is an [iOS app](https://apps.apple.com/us/app/appmarks/id1554446833?platform=iphone) developed with SwiftUI that lets you bookmark apps from the AppStore.
 
 I've been wanting to learn to develop iOS apps with SwiftUI, but hadn't been able to come up with any ideas for a starter project. After coming across this <s>[tweet reply](https://twitter.com/j_holtslander/status/1355273816847437831)</s> [archived tweet](http://web.archive.org/web/20210129215733/https://twitter.com/j_holtslander/status/1355273816847437831) I decided this is what I would build.
 
