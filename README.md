@@ -14,7 +14,7 @@ Appmarks is an iOS app developed with SwiftUI that lets you bookmark apps from t
 
 I've been wanting to learn to develop iOS apps with SwiftUI, but hadn't been able to come up with any ideas for a starter project. After coming across this <s>[tweet reply](https://twitter.com/j_holtslander/status/1355273816847437831)</s> [archived tweet](http://web.archive.org/web/20210129215733/https://twitter.com/j_holtslander/status/1355273816847437831) I decided this is what I would build.
 
-> I wish the app store had a way to boomark apps.
+> I wish the app store had a way to bookmark apps.
 
 I'm completely new to Swift and SwiftUI, (coming from a Java/PHP/ObjC background), so if I'm doing something wrong, feel free to let me know!
 
